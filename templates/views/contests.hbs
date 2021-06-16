@@ -8,7 +8,16 @@
 </head>
 <body>
     {{#each data}}
-        <div class="row"> <a href='{{url}}' target='_blank'>{{name}}</a> </div>
+        <div class="row"> 
+            <a href='{{url}}' target='_blank'>{{name}}</a>
+            <p>
+                {{site}}
+                {{!-- {{in_24_hours}}  if this is yes put in red --}}
+                {{start_time}}
+                {{end_time}}
+                {{status}}
+            </p>
+        </div>
     {{/each}}
 </body>
 </html>
