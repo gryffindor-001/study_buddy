@@ -22,6 +22,19 @@
                 </ul>
             </div>
         </div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <form method="POST">
+            <label><input type="checkbox" name="CodeChef" checked>CodeChef</label>
+            <label><input type="checkbox" name="HackerEarth" checked>HackerEarth</label>
+            <label><input type="checkbox" name="CodeForces" checked>CodeForces</label>
+            <label><input type="checkbox" name="AtCoder" checked>AtCoder</label>
+            <label><input type="checkbox" name="LeetCode" checked>LeetCode</label>
+            <input type="submit" value="submit">
+        </form>
     <div class="contest_body">
         <div class="row g-2">
         {{#each data}}
@@ -29,10 +42,18 @@
             <a href='{{url}}' target='_blank'>{{name}}</a>
             <p>
                 {{site}}<br>
+                {{#ifCond status 'CODING'}}
+                ONGOING<br>
+                end: {{end_time}}<br>
+                duration: {{duration}}
+                {{else}}
+                UPCOMING<br>
+                start: {{start_time}}<br>
+                end: {{end_time}}<br>
+                duration: {{duration}}
+                {{/ifCond}}<br>
                 {{!-- {{in_24_hours}}  if this is yes put in red --}}
-                {{start_time}}<br>
-                {{end_time}}<br>
-                {{status}}
+                
             </p>
         </div>
        {{/each}}
