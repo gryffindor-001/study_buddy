@@ -6,6 +6,7 @@ const path = require('path')
 const moment = require('moment')
 
 const { duration } = require('moment')
+const { on } = require('events')
 
 const app = express()
 
@@ -25,15 +26,7 @@ app.get('', (req, res) => {
     res.render('index')
 })
 
-app.all('/contests',(req,res,next)=>{
-    if(req.method==="POST")
-    req.hasData=true;
-
-    req.method="GET"
-    next()
-})
-
-app.get('/contests', (req, res) => {
+app.all('/contests', (req, res) => {
     const url = 'https://kontests.net/api/v1/all'
     
     request({
@@ -43,9 +36,26 @@ app.get('/contests', (req, res) => {
         if(error) {
             return console.log('Errorrrr')
         }
+        const sites = {
+            'CodeChef': true,
+            'HackerEarth': true,
+            'CodeForces': true,
+            'AtCoder': true,
+            'LeetCode': true,
+            'TopCoder': true,
+            'Kick': true,
+            'HackerRank': true
+        }
+        
+        if(req.method == 'POST') {
+            for(const property in sites) {
+                if(req.body[property]!='on') {
+                    sites[property] = false
+                }
+            }
+        }
         let data = contests.body.filter((e)=>e.duration!=0)
-        if(req.hasData)
-        data = data.filter((e)=>req.body[e.site]=='on')
+        data = data.filter((e)=>sites[e.site.split(" ")[0]])
         
         data.forEach(e => {
             e.start_time = moment(new Date(e.start_time).getTime()).format("MMM Do, YYYY  h:mm A")
@@ -53,7 +63,7 @@ app.get('/contests', (req, res) => {
             const temp = moment.duration(e.duration*1000)
             e.duration = `${parseInt(e.duration/(24*3600))}days ${temp.hours()}:${temp.minutes()}:${temp.seconds()}`
         });
-        res.render('contests', {data})
+        res.render('contests', {data, sites})
     })
 })
 

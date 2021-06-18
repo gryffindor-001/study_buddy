@@ -28,11 +28,14 @@
         <br>
         <br>
         <form method="POST">
-            <label><input type="checkbox" name="CodeChef" checked>CodeChef</label>
-            <label><input type="checkbox" name="HackerEarth" checked>HackerEarth</label>
-            <label><input type="checkbox" name="CodeForces" checked>CodeForces</label>
-            <label><input type="checkbox" name="AtCoder" checked>AtCoder</label>
-            <label><input type="checkbox" name="LeetCode" checked>LeetCode</label>
+            <label><input type="checkbox" name="CodeChef" {{#if sites.CodeChef}}checked{{/if}}>CodeChef</label>
+            <label><input type="checkbox" name="HackerEarth" {{#if sites.HackerEarth}}checked{{/if}}>HackerEarth</label>
+            <label><input type="checkbox" name="CodeForces" {{#if sites.CodeForces}}checked{{/if}}>CodeForces</label>
+            <label><input type="checkbox" name="AtCoder" {{#if sites.AtCoder}}checked{{/if}}>AtCoder</label>
+            <label><input type="checkbox" name="LeetCode" {{#if sites.LeetCode}}checked{{/if}}>LeetCode</label>
+            <label><input type="checkbox" name="HackerRank" {{#if sites.HackerRank}}checked{{/if}}>HackerRank</label>
+            <label><input type="checkbox" name="Kick" {{#if sites.Kick}}checked{{/if}}>Kick Start</label>
+            <label><input type="checkbox" name="TopCoder" {{#if sites.TopCoder}}checked{{/if}}>TopCoder</label>
             <input type="submit" value="submit">
         </form>
     <div class="contest_body">
