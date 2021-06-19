@@ -27,38 +27,47 @@
         <br>
         <br>
         <br>
-        <form method="POST">
-            <label><input type="checkbox" name="CodeChef" {{#if sites.CodeChef}}checked{{/if}}>CodeChef</label>
-            <label><input type="checkbox" name="HackerEarth" {{#if sites.HackerEarth}}checked{{/if}}>HackerEarth</label>
-            <label><input type="checkbox" name="CodeForces" {{#if sites.CodeForces}}checked{{/if}}>CodeForces</label>
-            <label><input type="checkbox" name="AtCoder" {{#if sites.AtCoder}}checked{{/if}}>AtCoder</label>
-            <label><input type="checkbox" name="LeetCode" {{#if sites.LeetCode}}checked{{/if}}>LeetCode</label>
-            <label><input type="checkbox" name="HackerRank" {{#if sites.HackerRank}}checked{{/if}}>HackerRank</label>
-            <label><input type="checkbox" name="Kick" {{#if sites.Kick}}checked{{/if}}>Kick Start</label>
-            <label><input type="checkbox" name="TopCoder" {{#if sites.TopCoder}}checked{{/if}}>TopCoder</label>
-            <input type="submit" value="submit">
+        
+        <div class="form_container">
+            <form method="POST">
+            <div class="filter_container">
+            <div class="check_box"> <label><input type="checkbox" class="form-check-input" name="CodeChef" {{#if sites.CodeChef}}checked{{/if}}>&nbsp;CodeChef</label></div> 
+            <div class="check_box"><label><input type="checkbox" class="form-check-input" name="HackerEarth" {{#if sites.HackerEarth}}checked{{/if}}>&nbsp;HackerEarth</label></div>
+            <div class="check_box"><label><input type="checkbox" class="form-check-input" name="CodeForces" {{#if sites.CodeForces}}checked{{/if}}>&nbsp;CodeForces</label></div>
+            <div class="check_box"><label><input type="checkbox" class="form-check-input" name="AtCoder" {{#if sites.AtCoder}}checked{{/if}}>&nbsp;AtCoder</label></div>
+            <div class="check_box"><label><input type="checkbox" class="form-check-input" name="LeetCode" {{#if sites.LeetCode}}checked{{/if}}>&nbsp;LeetCode</label></div>
+            <div class="check_box"><label><input type="checkbox" class="form-check-input" name="HackerRank" {{#if sites.HackerRank}}checked{{/if}}>&nbsp;HackerRank</label></div>
+            <div class="check_box"><label><input type="checkbox" class="form-check-input" name="Kick" {{#if sites.Kick}}checked{{/if}}>&nbsp;Kick Start</label></div>
+            <div class="check_box"><label><input type="checkbox" class="form-check-input" name="TopCoder" {{#if sites.TopCoder}}checked{{/if}}>&nbsp;TopCoder</label></div>
+            <br>
+            <div ><input type="submit" value="submit" class="btn btn-outline-primary"></div>
+            </div>
+           
         </form>
-    <div class="contest_body">
-        <div class="row g-2">
-        {{#each data}}
-        <div class="col-12 con_div"> 
-            <a href='{{url}}' target='_blank'>{{name}}</a>
-            <p>
-                {{site}}<br>
-                {{#ifCond status 'CODING'}}
-                ONGOING<br>
-                end: {{end_time}}<br>
-                duration: {{duration}}
-                {{else}}
-                UPCOMING<br>
-                start: {{start_time}}<br>
-                end: {{end_time}}<br>
-                duration: {{duration}}
-                {{/ifCond}}<br>
-                {{!-- {{in_24_hours}}  if this is yes put in red --}}
-                
-            </p>
+
         </div>
+    <div class="contest_body">
+        <div class="row g-2 justify-content-evenly scroll">
+        {{#each data}}
+        <div class="col-6 con_div"> 
+            
+            <div class="contest_link"><a href='{{url}}' target='_blank'>{{name}}</a></div>
+            <div class="row div_data justify-content-start">
+                <div class="col-2 site_name">{{site}}</div>
+                {{#ifCond status 'CODING'}}
+                <div class="col-2 ongoing">ONGOING</div>&nbsp;&nbsp;&nbsp;
+                <div class="col-4 end">Ends on : {{end_time}}</div>
+                <div class="col-3 duration"> Duration : {{duration}}</div>
+                 {{else}}
+                <div class="col-2 upcoming"> UPCOMING</div>&nbsp;&nbsp;&nbsp;
+                <div class="col-4 start">Started on : {{start_time}} Ends on : {{end_time}}</div>
+                <div class="col-3 duration"> Duration : {{duration}}</div>
+                {{/ifCond}}
+
+            </div>
+          
+        </div>
+        <hr>
        {{/each}}
         </div>
     </div>

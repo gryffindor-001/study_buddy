@@ -1,20 +1,60 @@
 .con_div{
-    height: 150px;
+    height: 70px;
     position: relative;
     margin-left: auto;
     margin-right: auto;
-    border-radius: 8px;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    width: 30%;
-    background-color: #ffffff;
+    /* box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); */
+    width: 1000px;
+    /* border-style: solid;
+    border-bottom-width:2px;
+    border-top-width: 0px ;
+    border-left-width: 0px;
+    border-right-width: 0px; */
 }
 .body{
     background-color: bisque ;
 }
 .contest_body{
     position: relative;
-    width: 80%;
-    top: 110px;
-    margin-left: auto;
+    width: 82%;
+    top: 10px;
+    margin-left: 250px;
     margin-right: auto;
 }
+.filter_container{
+    background-color: turquoise;
+    padding: 10px;
+    position: fixed;
+    border: turquoise;
+    border-width: 2px;
+    border-style: solid;
+    width: 200px;
+    border-radius: 5px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+}
+
+a{
+    text-decoration: none;
+}
+.scroll{
+    overflow: scroll;
+    height: 590px;
+}
+
+.ongoing{
+    display: flex;
+    justify-content: center;
+    background-color: rgb(137, 250, 137);
+    border-radius: 8px;
+
+}
+.upcoming{
+    border-radius: 8px;
+    display: flex;
+    height: 24px;
+    justify-content: center;
+    background-color: grey;
+}
+
+
