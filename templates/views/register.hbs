@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study_buddy</title>
+</head>
+<body>
+  
+    <form method="POST">
+        <input name="name" placeholder="username">
+        <input name="email" placeholder="email">
+        <input type="password" name="password">
+        <input type="submit">
+    </form>
+      <script>
+        {{#if error}}
+        alert('Unable to connect')
+       {{/if}}
+       {{#if inv}}
+        alert('Invalid password(either too short or contains "password")')
+       {{/if}}
+       {{#if mail}}
+        alert('Email already in use')
+       {{/if}}
+    </script>
+</body>
+</html>
