@@ -65,7 +65,7 @@ app.all('/contests', auth,(req, res) => {
             e.start_time = moment(new Date(e.start_time).getTime()).utcOffset("+05:30").format("MMM Do, YYYY  h:mm A")
             e.end_time = moment(new Date(e.end_time).getTime()).utcOffset("+05:30").format("MMM Do, YYYY  h:mm A")
             const temp = moment.duration(e.duration*1000)
-            e.duration = `${parseInt(e.duration/(24*3600))}days ${temp.hours()}:${temp.minutes()}:${temp.seconds()}`
+            e.duration = `${parseInt(e.duration/(24*3600))} days ${temp.hours()}:${temp.minutes()}:${temp.seconds()}`
         });
         res.render('contests', {data, sites})
     })
