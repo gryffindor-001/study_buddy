@@ -20,12 +20,14 @@
     top: 10px;
     margin-left: 250px;
     margin-right: auto;
+    margin-bottom: 25px;
 }
+
 .filter_container{
-    background-color: turquoise;
+    position: absolute;
+    /* background-color: #428DFC; */
     padding: 10px;
-    position: fixed;
-    border: turquoise;
+    border: #428DFC;
     border-width: 2px;
     border-style: solid;
     width: 200px;
@@ -47,6 +49,7 @@ a{
     justify-content: center;
     background-color: rgb(137, 250, 137);
     border-radius: 8px;
+    color: white;
 
 }
 .upcoming{
@@ -55,6 +58,7 @@ a{
     height: 24px;
     justify-content: center;
     background-color: grey;
+    color: white;
 }
 
 
