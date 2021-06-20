@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tasks</title>
+</head>
+<body>
+    <form method="POST"> 
+        <input name="description" type="textarea" placeholder="decription" required>
+        <input type="submit" value="Submit">
+    </form>
+    {{#each todos}}
+        <p>{{description}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/delete?id={{_id}}"><input type="button" value="Delete"></a></p>
+    {{/each}}
+    <br>
+    <br>
+    <br>
+    {{#for 1 totalPage 1}}
+    <a href='/todo?page={{this}}'>{{this}}</a>
+    {{/for}}
+</body>
+</html>

@@ -3,7 +3,7 @@ const express = require('express')
 const hbs = require('hbs')
 const path = require('path')
 const cookieParser = require('cookie-parser');
-const auth = require('./middleware/auth')
+const isauth = require('./middleware/isauth')
 const contestRouter = require('./routers/contests')
 const loginRouter = require('./routers/login')
 const registerRouter = require('./routers/register')
@@ -28,10 +28,17 @@ hbs.registerHelper('ifCond', function(v1, v2, options) {
       return options.fn(this);
     }
     return options.inverse(this);
-  });
+});
 
-app.get('', auth, (req, res) => {
-    res.render('index')
+hbs.registerHelper('for', function(from, to, incr, block) {
+  var accum = '';
+  for(var i = from; i < to; i += incr)
+      accum += block.fn(i);
+  return accum;
+});
+
+app.get('', isauth, (req, res) => {
+    res.render('index', {isauth: req.isauth, notisauth: !req.isauth})
 })
 
 app.listen(process.env.PORT, () => {
