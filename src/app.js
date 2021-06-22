@@ -9,6 +9,7 @@ const loginRouter = require('./routers/login')
 const registerRouter = require('./routers/register')
 const logoutRouter = require('./routers/logout')
 const todoRouter = require('./routers/todo')
+const analyticsRouter = require('./routers/analytics')
 
 const app = express()
 
@@ -22,6 +23,7 @@ app.use(loginRouter)
 app.use(registerRouter)
 app.use(logoutRouter)
 app.use(todoRouter)
+app.use(analyticsRouter)
 
 hbs.registerHelper('ifCond', function(v1, v2, options) {
     if(v1 === v2) {
