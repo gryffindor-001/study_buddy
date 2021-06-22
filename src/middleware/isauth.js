@@ -1,9 +1,10 @@
 const request = require('request')
 const isauth = (req,res,next)=>{
 
+    let flag=0;
     if(!req.cookies['auth_token']) {
         req.isauth = false
-        next()
+        f=1;
     }
 
     request.get('https://yug-task-manager.herokuapp.com/users/me', {
@@ -12,7 +13,7 @@ const isauth = (req,res,next)=>{
         },
         json: true
     }, (error, response) => {
-        if(error) {
+        if(error||flag==1) {
             req.isauth = false
             next()
         }

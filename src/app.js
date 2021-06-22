@@ -37,7 +37,7 @@ hbs.registerHelper('for', function(from, to, incr, block) {
   return accum;
 });
 
-app.get('', isauth, (req, res) => {
+app.get('/', isauth, (req, res) => {
     res.render('index', {isauth: req.isauth, notisauth: !req.isauth})
 })
 

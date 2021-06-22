@@ -1,6 +1,6 @@
+const cookieParser = require('cookie-parser')
 const request = require('request')
 const auth = (req,res,next)=>{
-
     if(!req.cookies['auth_token'])
     return res.redirect('/login?auth=1')
 
