@@ -2,3 +2,37 @@
     width: 62px;
     height: 62px;
 }
+.task_div{
+    
+   
+    width: 100%;
+}
+.task_row{
+   
+    width: 102%;
+    margin-right: 0px;
+    
+}
+.descp{
+    background-color:rgba(128, 128, 128, 0.164);
+    width: 65%;
+    border-radius: 8px;
+}
+.btn-outline-danger{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.page_num{
+    padding: 0px;
+    height: 20px;
+    width: 20px;
+    text-decoration: none;
+
+}
+.page_num_div{
+    padding: 0px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50px;
+}
