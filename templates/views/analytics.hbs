@@ -10,5 +10,10 @@
     <form method="POST">
         <input name="handle" placeholder="Codeforces Handle">
         <input type="submit" value="Submit">
+    </form>
+    {{#if isDefined}}
+    <p>{{profile.rating}}&nbsp;&nbsp;&nbsp;{{profile.rank}}&nbsp;&nbsp;&nbsp;{{profile.maxRating}}</p>
+    <img src={{profile.avatar}}>
+    {{/if}}
 </body>
 </html>
