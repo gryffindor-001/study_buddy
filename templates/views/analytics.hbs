@@ -8,11 +8,34 @@
 </head>
 <body>
     <form method="POST">
-        <input name="handle" placeholder="Codeforces Handle">
+        <input name="handle" placeholder="Codeforces Handle" required value={{#if isDefined}}{{handle}}{{/if}}>
         <input type="submit" value="Submit">
     </form>
     {{#if isDefined}}
-    <p>{{profile.rating}}&nbsp;&nbsp;&nbsp;{{profile.rank}}&nbsp;&nbsp;&nbsp;{{profile.maxRating}}</p>
+    <p>{{profile.rating}}&nbsp;&nbsp;&nbsp;{{profile.rank}}&nbsp;&nbsp;&nbsp;{{profile.maxRating}}&nbsp;&nbsp;&nbsp;{{profile.contests}}</p>
+    <p> {{profile.tried}}&nbsp;&nbsp;&nbsp;{{profile.solved}}&nbsp;&nbsp;&nbsp;{{profile.oneShot}} </p>
+    <p> {{profile.maxRank}}&nbsp;&nbsp;&nbsp;{{profile.minRank}}&nbsp;&nbsp;&nbsp;{{profile.maxUp}}&nbsp;&nbsp;&nbsp;{{profile.maxDown}} </p>
+    <p>
+        <br>
+        {{#each ratingDis}}
+        Rating: {{@key}} problems = {{this}}
+        <br>
+        {{/each}}
+    </p>
+    <p>
+        <br>
+        {{#each levelDis}}
+        Index: {{@key}} problems = {{this}}
+        <br>
+        {{/each}}
+    </p>
+    <p>
+        <br>
+        {{#each tags}}
+        Tag: {{@key}} = {{this}}
+        <br>
+        {{/each}}
+    </p>
     <img src={{profile.avatar}}>
     {{/if}}
 </body>
