@@ -1,10 +1,19 @@
 const request = require('async-request')
 const express = require('express')
 const auth = require('../middleware/auth')
+const path = require('path')
 const { response } = require('express')
 const { max } = require('moment')
 
 const router = new express.Router()
+
+//sorting object with keys
+function sortObject(obj) {
+    return Object.keys(obj).sort().reduce(function (result, key) {
+        result[key] = obj[key];
+        return result;
+    }, {});
+}
 
 router.all('/analytics',auth,async(req,res)=>{
     let handle="@@@@";
@@ -13,7 +22,10 @@ router.all('/analytics',auth,async(req,res)=>{
         handle = req.body.handle
     }
     if(handle == 'pigmeister' || handle == 'notapig')
-    return res.send("abe chl")
+    {
+        // res.set('Content-Type','image/jpg')
+        return res.sendFile(path.join(__dirname,'../../public/images/nipun.jpg'))
+    }
 
     try{
         let user = await request("https://codeforces.com/api/user.info?handles=" + handle)
@@ -157,10 +169,13 @@ router.all('/analytics',auth,async(req,res)=>{
             for(const property in tags) {
                 tags[property] = tags[property].size
             }
+            tags = Object.entries(tags)
+                .sort(([, a], [, b]) => a - b).reverse()
+                .reduce((r, [k, v]) => ({ ...r, [k]: v }), {});
 
+            levelDis = sortObject(levelDis)
             isDefined = true
         }
-
         res.render('analytics', {profile, ratingDis, levelDis, tags, handle, isDefined})
     }
     catch(e){

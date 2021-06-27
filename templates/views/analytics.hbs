@@ -5,6 +5,97 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Analytics</title>
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+    <script>
+        window.onload = function () {
+            //pie chart
+            var chart = new CanvasJS.Chart("chartContainer", {
+                theme: "dark2",  // "light1", "light2", "dark1", "dark2"
+                animationEnabled: true,
+                title: {
+                    text: "Tags of {{handle}}"
+                },
+                legend: {
+                    cursor: "pointer",
+                    itemclick: explodePie
+                },
+                data: [{
+                    type: "doughnut",
+                    innerRadius: 68,
+                    showInLegend: true,
+                    toolTipContent: "<b>{name}</b>: {y}",// (#percent%)
+                    //indexLabel: "{name} - #percent%",
+                    dataPoints: [
+                        {{#each tags}}
+                        { y: {{this}}, name: "{{@key}}" },
+                        {{/each}}
+                    ]
+                }]
+            });
+            chart.render();
+
+            function explodePie(e) {
+                if (typeof (e.dataSeries.dataPoints[e.dataPointIndex].exploded) === "undefined" || !e.dataSeries.dataPoints[e.dataPointIndex].exploded) {
+                    e.dataSeries.dataPoints[e.dataPointIndex].exploded = true;
+                } else {
+                    e.dataSeries.dataPoints[e.dataPointIndex].exploded = false;
+                }
+                e.chart.render();
+            }
+
+        //bar chart for rating
+    var chart = new CanvasJS.Chart("chartContainer1", {
+        animationEnabled: true,
+        theme: "dark1", // "light1", "light2", "dark1", "dark2"
+        title: {
+            text: "Problem Rating of {{handle}}"
+        },
+      //  axisY: {
+      //      title: "Reserves(MMbbl)"
+      //  },
+      axisX: {
+            interval:1,
+            labelAutoFit: false
+        },
+        data: [{
+            type: "column",
+            dataPoints: [
+            {{#each ratingDis}}
+                { y: {{this}}, label: "{{@key}}" },
+            {{/each}}
+            ]
+        }]
+    });
+    chart.render();
+
+
+              //bar chart for levels
+    var chart = new CanvasJS.Chart("chartContainer2", {
+        animationEnabled: true,
+        theme: "dark1", // "light1", "light2", "dark1", "dark2"
+        title: {
+            text: "Levels of {{handle}}"
+        },
+      //  axisY: {
+      //      title: "Reserves(MMbbl)"
+      //  },
+      axisX: {
+            interval:1,
+            labelAutoFit: false
+        },
+        data: [{
+            type: "column",
+            dataPoints: [
+            {{#each levelDis}}
+                { y: {{this}}, label: "{{@key}}" },
+            {{/each}}
+            ]
+        }]
+    });
+    chart.render();
+        }
+    </script>
+
 </head>
 <body>
     <form method="POST">
@@ -15,27 +106,9 @@
     <p>{{profile.rating}}&nbsp;&nbsp;&nbsp;{{profile.rank}}&nbsp;&nbsp;&nbsp;{{profile.maxRating}}&nbsp;&nbsp;&nbsp;{{profile.contests}}</p>
     <p> {{profile.tried}}&nbsp;&nbsp;&nbsp;{{profile.solved}}&nbsp;&nbsp;&nbsp;{{profile.oneShot}} </p>
     <p> {{profile.maxRank}}&nbsp;&nbsp;&nbsp;{{profile.minRank}}&nbsp;&nbsp;&nbsp;{{profile.maxUp}}&nbsp;&nbsp;&nbsp;{{profile.maxDown}} </p>
-    <p>
-        <br>
-        {{#each ratingDis}}
-        Rating: {{@key}} problems = {{this}}
-        <br>
-        {{/each}}
-    </p>
-    <p>
-        <br>
-        {{#each levelDis}}
-        Index: {{@key}} problems = {{this}}
-        <br>
-        {{/each}}
-    </p>
-    <p>
-        <br>
-        {{#each tags}}
-        Tag: {{@key}} = {{this}}
-        <br>
-        {{/each}}
-    </p>
+    <div id="chartContainer1" style="height: 370px; width: 100%;margin: 0 auto;"></div>
+    <div id="chartContainer2" style="height: 370px; width: 100%;margin: 0 auto;"></div>
+    <div id="chartContainer" style="height: 370px; width: 100%; margin: 0 auto;"></div>
     <img src={{profile.avatar}}>
     {{/if}}
 </body>
