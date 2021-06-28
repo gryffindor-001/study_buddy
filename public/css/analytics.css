@@ -9,3 +9,11 @@
     color: white;
     width: 145px;
 }
+.row .col-6{
+
+    width: 500px;
+    
+}
+.row .col-12{
+    width: 1000px;
+}
