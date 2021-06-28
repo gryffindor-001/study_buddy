@@ -42,6 +42,7 @@ router.all('/analytics',auth,async(req,res)=>{
         let ratingDis;
         let levelDis;
         let tags;
+        let verdicts;
         let isDefined = false
         if(handle!="@@@@"&&user.status=="OK")
         {   
@@ -174,9 +175,63 @@ router.all('/analytics',auth,async(req,res)=>{
                 .reduce((r, [k, v]) => ({ ...r, [k]: v }), {});
 
             levelDis = sortObject(levelDis)
+
+            // Rendering Object number 5
+            verdicts = {}
+
+            status.result.forEach((e) => {
+                switch(e.verdict) {
+                    case "OK":
+                        verdicts["AC"] = (verdicts["AC"] || 0) + 1
+                        break;
+                    case "FAILED":
+                        verdicts["FAILED"] = (verdicts["FAILED"] || 0) + 1
+                        break;
+                    case "PARTIAL":
+                        verdicts["PARTIAL"] = (verdicts["PARTIAL"] || 0) + 1
+                        break;
+                    case "COMPILATION_ERROR":
+                        verdicts["CPE"] = (verdicts["CPE"] || 0) + 1
+                        break;
+                    case "RUNTIME_ERROR":
+                        verdicts["RTE"] = (verdicts["RTE"] || 0) + 1
+                        break;
+                    case "WRONG_ANSWER":
+                        verdicts["WA"] = (verdicts["WA"] || 0) + 1
+                        break;
+                    case "PRESENTATION_ERROR":
+                        verdicts["PE"] = (verdicts["PE"] || 0) + 1
+                        break;
+                    case "TIME_LIMIT_EXCEEDED":
+                        verdicts["TLE"] = (verdicts["TLE"] || 0) + 1
+                        break;
+                    case "MEMORY_LIMIT_EXCEEDED":
+                        verdicts["MLE"] = (verdicts["MLE"] || 0) + 1
+                        break;
+                    case "IDLENESS_LIMIT_EXCEEDED":
+                        verdicts["IDLENESS_LIMIT_EXCEEDED"] = (verdicts["IDLENESS_LIMIT_EXCEEDED"] || 0) + 1
+                        break;
+                    case "CRASHED":
+                        verdicts["CRASHED"] = (verdicts["CRASHED"] || 0) + 1
+                        break;
+                    case "CHALLENGED":
+                        verdicts["CHALLENGED"] = (verdicts["CHALLENGED"] || 0) + 1
+                        break;
+                    case "SKIPPED":
+                        verdicts["SKIPPED"] = (verdicts["SKIPPED"] || 0) + 1
+                        break;
+                    case "TESTING":
+                        verdicts["TESTING"] = (verdicts["TESTING"] || 0) + 1
+                        break;
+                    case "REJECTED":
+                        verdicts["REJECTED"] = (verdicts["REJECTED"] || 0) + 1
+                        break;
+                }
+            });
+
             isDefined = true
         }
-        res.render('analytics', {profile, ratingDis, levelDis, tags, handle, isDefined})
+        res.render('analytics', {profile, ratingDis, levelDis, tags, handle, verdicts, isDefined})
     }
     catch(e){
         console.log(e)
