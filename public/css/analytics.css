@@ -1,0 +1,11 @@
+.text-right{
+    text-align: right;
+}
+.profile{
+    width: 150px;
+    height: 150px;
+}
+.btn-warning{
+    color: white;
+    width: 145px;
+}
