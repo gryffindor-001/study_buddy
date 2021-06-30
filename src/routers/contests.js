@@ -32,10 +32,10 @@ router.all('/contests', auth, (req, res) => {
                 }
             }
         }
-        let data = contests.body.filter((e)=>e.duration!=0)
-        data = data.filter((e)=>sites[e.site.split(" ")[0]])
+        let data = contests.body.filter((e) => e.duration!=0)
+        data = data.filter((e) => sites[e.site.split(" ")[0]])
         
-        data.forEach(e => {
+        data.forEach((e) => {
             e.start_time = moment(new Date(e.start_time).getTime()).utcOffset("+05:30").format("MMM Do, YYYY  h:mm A")
             e.end_time = moment(new Date(e.end_time).getTime()).utcOffset("+05:30").format("MMM Do, YYYY  h:mm A")
             const temp = moment.duration(e.duration*1000)

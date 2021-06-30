@@ -17,26 +17,26 @@ function sortObject(obj) {
 
 router.all('/analytics',auth,async(req,res)=>{
     let handle="@@@@";
-    if(req.method == "POST")
-    {
+    if(req.method == "POST") {
         handle = req.body.handle
     }
-    if(handle == 'pigmeister' || handle == 'notapig')
-    {
+    if(handle == 'pigmeister' || handle == 'notapig') {
         // res.set('Content-Type','image/jpg')
         return res.sendFile(path.join(__dirname,'../../public/images/nipun.jpg'))
     }
 
-    try{
+    try {
         let user = await request("https://codeforces.com/api/user.info?handles=" + handle)
         user = JSON.parse(user.body)
+        
         let status = await request("https://codeforces.com/api/user.status?handle=" + handle)
         status = JSON.parse(status.body)
+        
         let rating = await request("https://codeforces.com/api/user.rating?handle=" + handle)
         rating = JSON.parse(rating.body)
 
         if(handle!="@@@@"&&(user.status=="FAILED"||status.status=="FAILED"))
-        throw new Error("NOT found")
+            throw new Error("NOT found")
 
         let profile;
         let ratingDis;
@@ -44,8 +44,7 @@ router.all('/analytics',auth,async(req,res)=>{
         let tags;
         let verdicts;
         let isDefined = false
-        if(handle!="@@@@"&&user.status=="OK")
-        {   
+        if(handle!="@@@@"&&user.status=="OK") {   
             // Counting Tried and Solved problems
             let contests = rating.result.length
             let setTried = new Set()
@@ -94,7 +93,7 @@ router.all('/analytics',auth,async(req,res)=>{
             });
 
             // Rendering Object
-            profile={
+            profile = {
                 rating:user.result[0].rating,
                 avatar:user.result[0].avatar,
                 rank:user.result[0].rank,
@@ -231,13 +230,13 @@ router.all('/analytics',auth,async(req,res)=>{
 
             isDefined = true
         }
+
         res.render('analytics', {profile, ratingDis, levelDis, tags, handle, verdicts, isDefined})
     }
     catch(e){
         console.log(e)
         res.status(404).send()
     }
-
 })
 
 module.exports = router

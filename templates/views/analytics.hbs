@@ -34,80 +34,73 @@
             });
             chart.render();
 
-        //bar chart for rating
-        var chart = new CanvasJS.Chart("chartContainer1", {
-        animationEnabled: true,
-        theme: "light2", // "light1", "light2", "dark1", "dark2"
-        title: {
-            text: "Problem Rating of {{handle}}"
-        },
-      //  axisY: {
-      //      title: "Reserves(MMbbl)"
-      //  },
-      axisX: {
-            interval:1,
-            labelAutoFit: false
-        },
-        data: [{
-            type: "column",
-            dataPoints: [
-            {{#each ratingDis}}
-                { y: {{this}}, label: "{{@key}}" },
-            {{/each}}
-            ]
-        }]
-    });
-    chart.render();
-
-
-        //bar chart for levels
-    var chart = new CanvasJS.Chart("chartContainer2", {
-        animationEnabled: true,
-        theme: "light2", // "light1", "light2", "dark1", "dark2"
-        title: {
-            text: "Levels of {{handle}}"
-        },
-      //  axisY: {
-      //      title: "Reserves(MMbbl)"
-      //  },
-      axisX: {
-            interval:1,
-            labelAutoFit: false
-        },
-        data: [{
-            type: "column",
-            dataPoints: [
-            {{#each levelDis}}
-                { y: {{this}}, label: "{{@key}}" },
-            {{/each}}
-            ]
-        }]
-    });
-    chart.render();
-
-    // Pie chart for Verdicts
-        var chart = new CanvasJS.Chart("chartContainer3", {
-            animationEnabled: true,
-            title: {
-                text: "Verdicts of {{handle}}"
-            },
-            legend: {
-                cursor: "pointer",
-                itemclick: explodePie
-            },
-            data: [{
-                type: "pie",
-                showInLegend: true,
-                toolTipContent: "{name}: <strong>{y}</strong>",
-                dataPoints: [
-                    {{#each verdicts}}
-                    { y: {{this}}, name: "{{@key}}"},
+            //bar chart for rating
+            var chart = new CanvasJS.Chart("chartContainer1", {
+                animationEnabled: true,
+                theme: "light2", // "light1", "light2", "dark1", "dark2"
+                title: {
+                text: "Problem Rating of {{handle}}"
+                },
+                axisX: {
+                    interval:1,
+                    labelAutoFit: false
+                },
+                data: [{
+                    type: "column",
+                    dataPoints: [
+                    {{#each ratingDis}}
+                        { y: {{this}}, label: "{{@key}}" },
                     {{/each}}
-                ]
-            }]
-        });
-        chart.render();
+                    ]
+                }]
+            });
+            chart.render();
 
+
+            //bar chart for levels
+            var chart = new CanvasJS.Chart("chartContainer2", {
+                animationEnabled: true,
+                theme: "light2", // "light1", "light2", "dark1", "dark2"
+                title: {
+                text: "Levels of {{handle}}"
+                },
+                axisX: {
+                    interval:1,
+                    labelAutoFit: false
+                },
+                data: [{
+                    type: "column",
+                    dataPoints: [
+                    {{#each levelDis}}
+                        { y: {{this}}, label: "{{@key}}" },
+                    {{/each}}
+                    ]
+                }]
+            });
+            chart.render();
+
+            // Pie chart for Verdicts
+            var chart = new CanvasJS.Chart("chartContainer3", {
+                animationEnabled: true,
+                title: {
+                    text: "Verdicts of {{handle}}"
+                },
+                legend: {
+                    cursor: "pointer",
+                    itemclick: explodePie
+                },
+                data: [{
+                    type: "pie",
+                    showInLegend: true,
+                    toolTipContent: "{name}: <strong>{y}</strong>",
+                    dataPoints: [
+                        {{#each verdicts}}
+                        { y: {{this}}, name: "{{@key}}"},
+                        {{/each}}
+                    ]
+                }]
+            });
+            chart.render();
         }
 
         function explodePie(e) {
