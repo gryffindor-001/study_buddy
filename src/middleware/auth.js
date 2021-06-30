@@ -11,7 +11,10 @@ const auth = (req,res,next)=>{
         json: true
     }, (error, response) => {
         if(error)return res.redirect('/login?auth=1')
-        else if (!response.body.error)next()
+        else if (!response.body.error){
+            req.user_id=response.body._id
+            next()
+        }
         else return res.redirect('/login?auth=1')
     })
 

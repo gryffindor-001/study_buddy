@@ -10,12 +10,14 @@ const registerRouter = require('./routers/register')
 const logoutRouter = require('./routers/logout')
 const todoRouter = require('./routers/todo')
 const analyticsRouter = require('./routers/analytics')
+const scheduleRouter = require('./routers/schedule')
 
 const app = express()
 
 app.set('view engine', 'hbs')
 app.set('views', path.join(__dirname, '../templates/views'))
 app.use(express.static(path.join(__dirname, '../public')))
+hbs.registerPartials(path.join(__dirname,'../templates/partials'))
 app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
 app.use(contestRouter)
@@ -24,6 +26,7 @@ app.use(registerRouter)
 app.use(logoutRouter)
 app.use(todoRouter)
 app.use(analyticsRouter)
+app.use(scheduleRouter)
 
 hbs.registerHelper('ifCond', function(v1, v2, options) {
     if(v1 === v2) {

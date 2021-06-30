@@ -17,6 +17,9 @@
     background-color:rgba(128, 128, 128, 0.164);
     width: 65%;
     border-radius: 8px;
+    font-family: 'Akaya Kanadaka', cursive;
+    font-size: 28px;
+    color: #4d4d4d;
 }
 .btn-outline-danger{
     display: flex;

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schedule</title>
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    {{>header}}
+    <form method="POST">
+        Day:<select name='day' required>
+            <option name='select' selected disabled>--Select Day--</option>
+            <option name='sunday'>Sunday</option>
+            <option name='monday'>Monday</option>
+            <option name='tuesday'>Tuesday</option>
+            <option name='wednesday'>Wednesday</option>
+            <option name='thursday'>Thursday</option>
+            <option name='friday'>Friday</option>
+            <option name='saturday'>Saturday</option>
+        </select>
+        <br>
+        Start Time:<input type="time" name="start" required>
+        <br>
+        End Time:<input type="time" name="end" required>
+        <br>
+        Description:<textarea name='description' required></textarea>
+        <br>
+        Importance: <br>
+        1:<input type="radio" name='importance' value="1" required>
+        <br>
+        2:<input type="radio" name='importance' value="2">
+        <br>
+        3:<input type="radio" name='importance' value='3'>
+        <input type="submit" value="submit">
+    </form>
+
+</body>
+</html>
