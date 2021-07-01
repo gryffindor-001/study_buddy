@@ -14,12 +14,11 @@
     
 }
 .descp{
-    background-color:rgba(128, 128, 128, 0.164);
+    background-color:rgba(0, 0, 0);
     width: 65%;
     border-radius: 8px;
-    font-family: 'Akaya Kanadaka', cursive;
-    font-size: 28px;
-    color: #4d4d4d;
+    font-size: 18px;
+    color: #ffffff;
 }
 .btn-outline-danger{
     display: flex;
@@ -31,11 +30,31 @@
     height: 20px;
     width: 20px;
     text-decoration: none;
+    color: white;
 
+}
+.page_num_div:hover{
+    background-color: white;
+    color: black;
+    
 }
 .page_num_div{
     padding: 0px;
     width: 30px;
     height: 30px;
     border-radius: 50px;
+    
+    border-color: white;
+    color: white;
+    background-color: black;
+}
+.main_container{
+    border-style: solid;
+    border-width: 2px;
+    border-color: white;
+    border-radius: 8px;
+    background-color: rgba(0, 0, 0,0.35);
+}
+.page_link{
+    width: 35px;
 }

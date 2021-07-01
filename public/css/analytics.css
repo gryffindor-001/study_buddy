@@ -17,3 +17,15 @@
 .row .col-12{
     width: 1000px;
 }
+.btn.search{
+    border-color: white;
+    color: white;
+    background-color: black;
+}
+a{
+    text-decoration: none;
+}
+.btn.search:hover{
+    background-color: white;
+    color: black;
+}

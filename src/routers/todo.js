@@ -16,8 +16,8 @@ router.get('/todo', auth, (req, res) => {
     }, (error, response) => {
         if(error) return res.status(404).send()
         
-        totalPage = parseInt(((response.body.length-1)/10)+1)
-        request.get('https://yug-task-manager.herokuapp.com/tasks?limit=10&skip=' + (pageNo-1)*10, {
+        totalPage = parseInt(((response.body.length-1)/5)+1)
+        request.get('https://yug-task-manager.herokuapp.com/tasks?limit=5&skip=' + (pageNo-1)*5, {
             'auth': {
                 'bearer': req.cookies['auth_token']
             },

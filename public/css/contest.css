@@ -17,17 +17,18 @@
 .contest_body{
     position: relative;
     width: 82%;
-    top: 10px;
     margin-left: 250px;
     margin-right: auto;
     margin-bottom: 25px;
+    background-color: rgba(0, 0, 0, 0.75);
+    border-radius: 5px;
 }
 
 .filter_container{
     position: absolute;
     /* background-color: #428DFC; */
     padding: 10px;
-    border: #428DFC;
+    border: white;
     border-width: 2px;
     border-style: solid;
     width: 200px;
@@ -60,5 +61,17 @@ a{
     background-color: grey;
     color: white;
 }
-
+.btn.filter{
+    border-color: white;
+    color: white;
+    width: 80px;
+    background-color: black;
+}
+a{
+    text-decoration: none;
+}
+.btn.filter:hover{
+    background-color: white;
+    color: black;
+}
 

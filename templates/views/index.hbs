@@ -8,11 +8,13 @@
     <title>Study_Buddy</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-    <link rel="stylesheet" href="./css/style.css">
-</head>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300&family=Syncopate&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./css/style.css">
 
 <body>
-
     <div class="skippy visually-hidden-focusable overflow-hidden">
         <div class="container-xl">
             <a class="d-inline-flex p-2 m-1" href="#content">Skip to main content</a>
@@ -20,15 +22,14 @@
         </div>
     </div>
     {{>header}}
-    <main>
+    <main class="main">
 
-        <div class="bd-masthead mb-3 mt-4">
             <div class="container px-4 px-md-3">
-                <div class="row align-items-center mt-4 main_content">
+                <div class="row mt-4 main_content">
                     <div class="col-6">
 
-                        <h1 class="mb-2">The best study companion you can get !</h1>
-                        <ul class="mt-4 ">
+                        <h1 class="mb-2" style="font-family: 'Quicksand';">The best study companion <br> you can get !</h1>
+                        <ul class="mt-4 " style="font-family: 'Quicksand';">
                             <li class="mb-2">Boost productivity </li>
                             <li>Toolkit for software engineers</li>
                             <li>Easy to use</li>
@@ -38,40 +39,20 @@
 
 
                     </div>
-                    <div class="col-6 main_img">
-                        <img src="./images/clip-programming.png" alt="" width="100%" height="100%">
+                    <div class="col-2 ms-auto me-5">
+                        {{#if notisauth}}<a href='/register'><div class="btn btn-outline-primary m-2 login">Register</div></a>
+
+                <a href='/login'><div class="btn btn-outline-primary m-2 login">Login</div></a>{{/if}}
                     </div>
                 </div>
-                {{#if notisauth}}<a href='/register'><div class="btn btn-outline-primary m-2">Register Now</div></a>
-
-                <a href='/login'><div class="btn btn-outline-primary m-2">Already have an account</div></a>{{/if}}
+                
 
             </div>
-        </div>
 
     </main>
 
-    <footer class="bd-footer py-1">
-        <div class="container foot-container">
-            <div class="row justify-contents-center footer_content">
-
-                <div class="row col-6 mt-2">
-                    <ul class="col-4 foot-head-1">Useful links<br>
-                        <div class="col-2">
-                            <li><a href="/">Home</a></li>
-                            <li><a href="/contests">Contests</a></li>
-                            <li><a href="/resources">Resources</a></li>
-                        </div>
-                        <div class="col-2">
-                            <li><a href="/todo">Todo</a></li>
-                            <li><a href="/schedule">Schedule</a></li>
-                            <li><a href="/analytics">Analytics</a></li>
-                        </div>
-
-                    </ul>
-                </div>
-            </div>
-
+    <footer class="">
+   
     </footer>
 </body>
 
