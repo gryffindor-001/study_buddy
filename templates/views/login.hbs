@@ -39,12 +39,14 @@
     </div>
     
       <script>
-        {{#if error}}
-        alert('Unable to login')
-        {{/if}}
-         {{#if auth}}
-        alert('Pls authenticate')
-        {{/if}}
+          window.onload = function(){
+                {{#if error}}
+                alert('Unable to login')
+                {{/if}}
+                {{#if auth}}
+                alert('Pls authenticate')
+                {{/if}}
+          }
     </script>
 </body>
 </html>

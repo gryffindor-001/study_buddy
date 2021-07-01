@@ -57,15 +57,17 @@
     </div>
 
     <script>
-      {{#if error}}
-        alert('Unable to connect')
-      {{/if}}
-      {{#if inv}}
-        alert('Invalid password(either too short or contains "password")')
-      {{/if}}
-      {{#if mail}}
-        alert('Email already in use')
-      {{/if}}
+      window.onload = function (){
+          {{#if error}}
+            alert('Unable to connect')
+          {{/if}}
+          {{#if inv}}
+            alert('Invalid password(either too short or contains "password")')
+          {{/if}}
+          {{#if mail}}
+            alert('Email already in use')
+          {{/if}}
+      }
     </script>
   </body>
 </html>
