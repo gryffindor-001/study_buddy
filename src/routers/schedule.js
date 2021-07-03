@@ -4,6 +4,15 @@ const mongoose = require('mongoose')
 
 const router = new express.Router()
 
+function compare(a, b) {
+    if (a.startTimeHour < b.startTimeHour) {
+      return -1;
+    }
+    else {
+        return 1;
+    }
+}
+
 const tableSchema = new mongoose.Schema({
     description: {
         type: String,
@@ -14,12 +23,20 @@ const tableSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    startTime: {
-        type: String,
+    startTimeHour: {
+        type: Number,
         required: true
     },
-    endTime: {
-        type: String,
+    startTimeMin: {
+        type: Number,
+        required: true
+    },
+    endTimeHour: {
+        type: Number,
+        required: true
+    },
+    endTimeMin: {
+        type: Number,
         required: true
     },
     importance: {
@@ -44,31 +61,62 @@ router.get('/schedule', auth, async (req, res) => {
     let Saturday = await Schedule.find({user_id: req.user_id, day: 'Saturday'})
     let Sunday = await Schedule.find({user_id: req.user_id, day: 'Sunday'})
 
-    let schedules = {}
-    Monday.forEach((e) => {
-        if(schedules['Monday'] == undefined) {
-            schedules['Monday'] = []
-        }
-        schedules['Monday'].push(Object.assign({}, e))
-        console.log(e)
-        console.log('$')
-    });
+    Monday.sort(compare)
+    Tuesday.sort(compare)
+    Wednesday.sort(compare)
+    Thursday.sort(compare)
+    Friday.sort(compare)
+    Saturday.sort(compare)
+    Sunday.sort(compare)
 
-    console.log(schedules)
-    res.render('schedule')
+    res.render('schedule', {error: req.query.error, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday, isauth: true})
 })
 
-router.post('/schedule', auth, (req, res) => {
+router.post('/schedule', auth, async (req, res) => {
     const data = new Schedule({
         description: req.body.description,
         day: req.body.day,
-        startTime: req.body.start,
-        endTime: req.body.end,
+        startTimeHour: parseInt(req.body.start.split(":")[0]),
+        startTimeMin: parseInt(req.body.start.split(":")[1]),
+        endTimeHour: parseInt(req.body.end.split(":")[0]),
+        endTimeMin: parseInt(req.body.end.split(":")[1]),
         importance: req.body.importance,
         user_id: req.user_id
     })
-    data.save()
-    res.redirect('/schedule')
+
+    let tasks = await Schedule.find({user_id: req.user_id, day: data.day})
+    let flag = false
+
+    if(data.startTimeHour > data.endTimeHour) {
+        flag = true
+    }
+    else if(data.startTimeHour == data.endTimeHour && data.startTimeMin > data.endTimeMin) {
+        flag = true
+    } 
+    
+    if(data.day == undefined) {
+        flag = true
+    }
+
+    tasks.forEach((e) => {
+        if(data.startTimeHour>e.startTimeHour && data.startTimeHour<e.endTimeHour) {
+            flag = true;
+        }
+        if(data.endTimeHour>e.startTimeHour && data.endTimeHour<e.endTimeHour) {
+            flag = true;
+        }
+        if(data.startTimeHour == e.startTimeHour) {
+            if(data.startTimeMin < e.endTimeMin || e.startTimeMin < data.endTimeMin) {
+                flag = true;
+            }
+        }
+    });
+    
+    if(!flag) {
+        await data.save()
+    }
+
+    res.redirect('/schedule?error=' + flag)
 })
 
 module.exports = router

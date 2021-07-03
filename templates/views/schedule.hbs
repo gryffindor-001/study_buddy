@@ -11,9 +11,18 @@
 <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300&family=Syncopate&display=swap" rel="stylesheet"><link rel="stylesheet" href="./css/style.css">
   
     <link rel="stylesheet" href="/css/schedule.css">
+    <script>
+        window.onload = function() {
+            {{#ifCond error "true"}}
+                alert("Time taken or Invalid input")
+            {{else}}
+                console.log('Kyahiiiiiiiii')
+            {{/ifCond}}
+        }
+    </script>
 </head>
 <body>
-    
+    {{>header}}
     <form method="POST">
         Day:<select name='day' required>
             <option name='select' selected disabled>--Select Day--</option>
@@ -42,25 +51,61 @@
     </form>
 
     Monday:<ul> 
-        
+        {{#each Monday}}
+            <li>
+                {{description}}&nbsp;&nbsp;&nbsp;&nbsp;{{startTimeHour}}:{{startTimeMin}}
+                &nbsp;&nbsp;&nbsp;&nbsp;{{importance}}
+            </li>
+        {{/each}}
     </ul>
     Tuesday:<ul> 
-        
+        {{#each Tuesday}}
+            <li>
+                {{description}}&nbsp;&nbsp;&nbsp;&nbsp;{{startTimeHour}}:{{startTimeMin}}
+                &nbsp;&nbsp;&nbsp;&nbsp;{{importance}}
+            </li>
+        {{/each}}
     </ul>
     Wednesday:<ul> 
-        
+        {{#each Wednesday}}
+            <li>
+                {{description}}&nbsp;&nbsp;&nbsp;&nbsp;{{startTimeHour}}:{{startTimeMin}}
+                &nbsp;&nbsp;&nbsp;&nbsp;{{importance}}
+            </li>
+        {{/each}}
     </ul>
     Thursday:<ul> 
-        
+        {{#each Thursday}}
+            <li>
+                {{description}}&nbsp;&nbsp;&nbsp;&nbsp;{{startTimeHour}}:{{startTimeMin}}
+                &nbsp;&nbsp;&nbsp;&nbsp;{{importance}}
+            </li>
+        {{/each}}
     </ul>
     Friday:<ul> 
+        {{#each Friday}}
+            <li>
+                {{description}}&nbsp;&nbsp;&nbsp;&nbsp;{{startTimeHour}}:{{startTimeMin}}
+                &nbsp;&nbsp;&nbsp;&nbsp;{{importance}}
+            </li>
+        {{/each}}
         
     </ul>
     Saturday:<ul> 
-        
+        {{#each Saturday}}
+            <li>
+                {{description}}&nbsp;&nbsp;&nbsp;&nbsp;{{startTimeHour}}:{{startTimeMin}}
+                &nbsp;&nbsp;&nbsp;&nbsp;{{importance}}
+            </li>
+        {{/each}}
     </ul>
-    Sunday:<ul> 
-        
+    Sunday:<ul>
+        {{#each Sunday}}
+            <li>
+                {{description}}&nbsp;&nbsp;&nbsp;&nbsp;{{startTimeHour}}:{{startTimeMin}}
+                &nbsp;&nbsp;&nbsp;&nbsp;{{importance}}
+            </li>
+        {{/each}}
     </ul>
 </body>
 </html>

@@ -41,7 +41,7 @@ router.all('/contests', auth, (req, res) => {
             const temp = moment.duration(e.duration*1000)
             e.duration = `${parseInt(e.duration/(24*3600))} days ${temp.hours()}:${temp.minutes()}:${temp.seconds()}`
         });
-        res.render('contests', {data, sites})
+        res.render('contests', {data, sites, isauth: true})
     })
 })
 

@@ -25,7 +25,7 @@ router.get('/todo', auth, (req, res) => {
         }, (error, response) => {
             if(error) return res.status(404).send()
         
-            res.render('todo', {todos: response.body, page: pageNo, totalPage: totalPage+1})
+            res.render('todo', {todos: response.body, page: pageNo, totalPage: totalPage+1, isauth: true})
         })  
     })
 })
