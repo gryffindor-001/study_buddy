@@ -136,9 +136,135 @@
                 
             </form>
         </div>
+
+        <div class="row">
+            <div class="col-1"></div>
+                <div class="col-10 main_container d-flex justify-content-around align-items-center mt-5">
+                    {{#if isDefined}}
+                    <div id="1" class="container pg pg-1">
+        <div class="row justify-content-between mt-3">
+            <div class="col-2 dp">
+                    <img class="img-thumbnail profile" src={{profile.avatar}}>
+                
+                
+                <div class="rank mt-2 btn btn-warning">
+                    {{profile.rank}}
+                </div>
+            </div>
+            
+            
+                
+               
+                    <div class="col-5">
+                        
+                <table class="table table-dark table-striped rounded table-hover">
+                    <tbody> 
+                        <tr>
+                            {{!-- <td scope="row"></td> --}}
+                            <td>Current Rating</td>
+                            <td class="text-right">{{profile.rating}}</td>
+                        </tr>
+                        <tr>
+                            {{!-- <td scope="row"></td> --}}
+                            <td>Maximum Rating</td>
+                            <td class="text-right">{{profile.maxRating}}</td>
+                        </tr>
+                         <tr>
+                            {{!-- <td scope="row"></td> --}}
+                            <td>Contests</td>
+                            <td class="text-right">{{profile.contests}}</td>
+                        </tr>
+                        <tr>
+                            {{!-- <td scope="row"></td> --}}
+                            <td>Tried</td>
+                            <td class="text-right">{{profile.tried}}</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Solved
+                            </td>
+                            <td class="text-right">
+                                {{profile.solved}}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                    </div>
+                    <div class="col-5">
+                        <table class="table table-dark table-striped rounded table-hover">
+                    <tbody class="rounded"> 
+                        <tr class="rounded">
+                            {{!-- <td scope="row"></td> --}}
+                            <td>Solved with Single Submission</td>
+                            <td class="text-right">{{profile.oneShot}}</td>
+                        </tr>
+                        <tr>
+                            {{!-- <td scope="row"></td> --}}
+                            <td>Maximum Rank</td>
+                            <td class="text-right">{{profile.maxRank}}</td>
+                        </tr>
+                         <tr>
+                            {{!-- <td scope="row"></td> --}}
+                            <td>Minimum Rank</td>
+                            <td class="text-right">{{profile.minRank}}</td>
+                        </tr>
+                        <tr>
+                            {{!-- <td scope="row"></td> --}}
+                            <td>Maximum Up</td>
+                            <td class="text-right">{{profile.maxUp}}</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Maximum Down
+                            </td>
+                            <td class="text-right">
+                                {{profile.maxDown}}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                        
+                  
+                    </div>
+                
+               
+                
+
+                
+        </div>
+        </div>
+        <div id="2" class="container d-flex justify-content-center pg pg-2">
+            <div class="col-4 pie mt-3 shadow p-3 m-3 bg-body rounded">
+                <div id="chartContainer" style="height: 370px; width: 100%; margin: 0 auto;"></div>
+            </div>
+            <div class="col-4 pie shadow p-3 m-3 bg-body rounded">
+                <div id="chartContainer3" style="height: 370px; width: 100%; margin: 0 auto;"></div>
+            </div>
+        </div>
+        <div id="3" class="container d-flex justify-content-center pg pg-3">
+             <div class="col-12 shadow p-3 m-4 bg-body rounded">
+                <div id="chartContainer1" style="height: 370px; width: 100%;margin: 0 auto;"></div>
+    
+            </div>
+
+        </div>
+        <div id="4" class="container d-flex justify-content-center pg pg-4">
+            <div class="col-12 shadow p-3 m-4 bg-body rounded">
+                <div id="chartContainer2" class="mt-4" style="height: 370px; width: 100%;margin: 0 auto;"></div>
+            </div>
+
+        </div>
+        {{/if}}
+                </div>
+            <div class="col-1"></div>
+        </div>
+        
+
+
+        
     
     
-    {{#if isDefined}}
+    {{!-- {{#if isDefined}}
     <div class="container">
         <div class="row justify-content-between mt-3">
             <div class="col-2 dp">
@@ -249,8 +375,8 @@
     
      
     
-    </div>
-    {{/if}}
+    </div> --}}
+    {{!-- {{/if}} --}}
     </div>
 </body>
 </html>

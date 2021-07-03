@@ -1,6 +1,5 @@
 .new_task{
-    width: 62px;
-    height: 62px;
+    width: 100%;
 }
 .task_div{
     
@@ -15,10 +14,17 @@
 }
 .descp{
     background-color:rgba(0, 0, 0);
-    width: 65%;
     border-radius: 8px;
     font-size: 18px;
     color: #ffffff;
+}
+.ex-descp{
+    border-radius: 8px;
+    font-size: 18px;
+    height: 380px ;
+    
+    background-color: white;
+    color: black;
 }
 .btn-outline-danger{
     display: flex;
@@ -49,12 +55,61 @@
     background-color: black;
 }
 .main_container{
+    position: relative;
     border-style: solid;
     border-width: 2px;
     border-color: white;
     border-radius: 8px;
     background-color: rgba(0, 0, 0,0.35);
+    height: 500px;
 }
 .page_link{
     width: 35px;
+}
+.form-container{
+    position: absolute;
+    top: 5%;
+    left: 35%;
+    width: 30%;
+    height: 500px;
+    visibility: hidden;
+    z-index: 999999;
+}
+.new-task-div{
+    height: 170px;
+    border-radius: 10px;
+}
+.brief-task{
+
+    height: 170px;
+    border-radius: 10px;
+}
+.expand-task{
+    position: absolute;
+    top: 5%;
+    left: 35%;
+    width: 30%;
+    height: 450px;
+    visibility: hidden;
+    z-index: 999999;
+}
+
+
+#description{
+    height: 400px;
+}
+#overlay-blur{
+    position: absolute;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    z-index: 99999;
+    background-color: rgb(0,0,0,0.75);
+    visibility: hidden;
+}
+.new-svg{ 
+
+    height: 50px;
+    width: 50px;
+
 }

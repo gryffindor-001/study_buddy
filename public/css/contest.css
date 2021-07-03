@@ -11,6 +11,9 @@
     border-left-width: 0px;
     border-right-width: 0px; */
 }
+thead{
+    position: relative;
+}
 .body{
     background-color: bisque ;
 }
@@ -42,7 +45,7 @@ a{
 }
 .scroll{
     overflow: scroll;
-    height: 590px;
+    height: 500px;
 }
 
 .ongoing{

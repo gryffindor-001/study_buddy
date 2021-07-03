@@ -29,3 +29,24 @@ a{
     background-color: white;
     color: black;
 }
+.main_container{
+    position: relative;
+    border-style: solid;
+    border-width: 2px;
+    border-color: white;
+    border-radius: 8px;
+    background-color: rgba(0, 0, 0,0.35);
+    height: 450px;
+}
+.pg{
+    position: absolute;
+}
+.pg-1{
+    visibility: hidden;
+}
+.pg-2{
+    visibility: hidden;
+}
+.pg-3{
+    visibility: hidden;
+}

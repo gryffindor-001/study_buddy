@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="./css/todo.css">
 </head>
 <body>
+    <div id="overlay-blur"></div>
      <div class="skippy visually-hidden-focusable overflow-hidden">
         <div class="container-xl">
             <a class="d-inline-flex p-2 m-1" href="#content">Skip to main content</a>
@@ -22,23 +23,58 @@
     {{>header}}
     <main>
         <div class="container mt-0 main_container">
-                    <div class="form-container mt-5">
+                    
+                    <div id="form" class="form-container">
                         <form class = "row justify-content-center" method="POST"> 
-                            <div class="col-8">
-                                <textarea name = "description" class="form-control task pt-2" id="description" placeholder="Add a new task"></textarea>
+                            <div class="col-12 new-task-input">
+                                <textarea name ="description" class="form-control task pt-2" id="description" placeholder="Add a new task"></textarea>
                             </div>
-                            <div class="col-1 add_button p-0">
-                         <input type="submit" class = "btn btn-outline-success new_task" value="ADD">
+                            <div class="col-12 add_button px-2 mt-2">
+                         <input type="submit" onclick="hide()" class = "btn btn-success new_task" value="ADD" style="width: 100%;">
                          </input>
                         
 
                             </div>
-                    </form>
+                        </form>
 
                     </div>
-                     {{#each todos}}
+                    <div class="row justify-content-center mt-5">
+                        
+                        <div class="d-flex justify-content-center align-items-center col-2 btn btn-success new-task-div m-2" onclick="show()">
+                        <svg class="new-svg" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-plus" viewBox="0 0 16 16">
+                        <path d="M8 6.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V11a.5.5 0 0 1-1 0V9.5H6a.5.5 0 0 1 0-1h1.5V7a.5.5 0 0 1 .5-.5z"/>
+                        <path d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5L14 4.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h-2z"/>
+                        </svg>
+                    </div>
+                    {{#each todos}}
+                                <div id="{{_id}}" class="row justify-content-start align-items-start g-0 expand-task">
+                                        <div class="col-12 ex-descp p-3">
+                                        {{description}}
 
-                        <div class="row justify-content-center task_row mt-3">
+                                        </div>
+                                        <div class="col-12" onclick="collapse_task('{{_id}}')">
+                                            <a href="/delete?id={{_id}}"><div class="btn btn-danger new_task"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                                <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                                                <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                                                </svg></div>
+                                            </a>
+                                        
+                                        </div>
+                                </div>
+                            
+                            <div class="col-2 brief-task descp m-2 p-3" onclick="expand_task('{{_id}}')">
+                                
+                                {{description}}
+                        
+                            {{!-- <div>
+                                <a href="/delete?id={{_id}}"><div class="btn btn-outline-danger new_task p-2"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+  <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+  <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+</svg></div></a>
+                            
+                            </div> --}}
+                            </div>
+                        {{!-- <div class="row justify-content-center task_row mt-3">
                             <div class="col-8 descp p-3">
                                 {{description}}
                         
@@ -50,9 +86,11 @@
 </svg></div></a>
                             
                             </div>
-                    </div>
+                    </div> --}}
         
                      {{/each}}
+                    </div>
+                     
                     
 
                     <div class="row page_num_container justify-content-center mt-2 ">
@@ -83,6 +121,36 @@
             
         </div>
     </main>
+    <script>
+        function show() {
+
+     let div = document.getElementById("form");
+    div.style.visibility = "visible"
+    let overlay = document.getElementById("overlay-blur");
+    overlay.style.visibility = "visible";
+
+}
+        function hide() {
+            let div = document.getElementById("form");
+            div.style.visibility = "hidden"
+            let overlay = document.getElementById("overlay-blur");
+            overlay.style.visibility = "hidden";
+        }
+
+        function expand_task(id) {
+
+    let element = document.getElementById(id);
+    element.style.visibility = "visible"
+    let overlay = document.getElementById("overlay-blur");
+    overlay.style.visibility = "visible";
+}
+        function collapse_task(id) {
+            let element = document.getElementById(id);
+            element.style.visibility = "hidden"
+            let overlay = document.getElementById("overlay-blur");
+            overlay.style.visibility = "hidden";
+        }
+    </script>
    
    
     

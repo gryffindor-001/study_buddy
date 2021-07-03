@@ -45,17 +45,86 @@
         </form>
         </div>
     </aside>
-        
     <div class="contest_body scroll">
-        <div class="row justify-content-center head g-2 mt-1">
-            <div class="row col-4 info ">
-                <div class="col-2"><h6>Status</h6></div>
-                <div class="col-2 offset-4" ><h6>Event</h6> </div>
+    <table class="table table-dark table-striped">
+        <thead>
+            <tr>
+                <div>
+                    <th>Status</th>
+                    <th>Event</th>
+                    <th>Host</th>
+                    <th>Start Time</th>
+                    <th>End Time</th>
+                    <th>Duration</th>
+                </div>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each data}}
+                <tr>
+                    <td>
+                        {{#ifCond status 'CODING'}}
+                        ONGOING
+                        {{else}}
+                        UPCOMING
+                        {{/ifCond}}
+                    </td>
+                    <td>
+                        <a href='{{url}}' target='_blank'>{{name}}</a>
+                    </td>
+                    <td>
+                        {{site}}
+                    </td>
+                    <td>
+                        {{#ifCond status 'CODING'}}
+                        Already Started
+                        {{else}}
+                        {{start_time}}
+                        {{/ifCond}}
+                    </td>
+                    <td>
+                        {{end_time}}
+                    </td>
+                    <td>
+                        {{duration}}
+                    </td>
+                </tr>
+
+            {{!-- <div class="row col-5 justify-content-between info mt-1 ">
+                <div class="col-2">{{#ifCond status 'CODING'}}
+                <div class="btn btn-success">ONGOING</div>
+                 {{else}}
+                <div class="btn btn-secondary"> UPCOMING</div>
+                {{/ifCond}}</div>
+                <div class="col-6 " ><a href='{{url}}' target='_blank'>{{name}}</a></div>
+                <div class="col-2"><h6>{{site}}</h6></div>
             </div>
-            <div class="row col-8 time ">
+            <div class="row col-7 justify-content-between time mt-1">
+                {{#ifCond status 'CODING'}}
+                <div class="col-3" >Already Started</div>
+                 {{else}}
+               <div class="col-3">{{start_time}}</div>
+                {{/ifCond}}
+                
+                <div class="col-3 "><div class="end">{{end_time}}</div></div>
+                <div class="col-2 "><div class="yduration">{{duration}}</div></div>
+            </div> --}}
+       
+            {{/each}}
+        </tbody>
+    </table>   
+    </div> 
+    {{!-- <div class="contest_body scroll">
+        <div class="row head g-2 mt-1">
+            <div class="row justify-content-between col-5 info ">
+                <div class="col-2"><h6>Status</h6></div>
+                <div class="col-6" ><h6>Event</h6> </div>
+                <div class="col-2"><h6>Host</h6></div>
+            </div>
+            <div class="row col-5 justify-content-between time ">
                 <div class="col-3"> <h6>Start Time</h6></div>
-                <div class="col-3 offset-2"> <h6>End Time</h6> </div>
-                <div class="col-2 offset-2"> <h6>Duration</h6></div>
+                <div class="col-3"> <h6>End Time</h6> </div>
+                <div class="col-2"> <h6>Duration</h6></div>
             </div>
 
         </div>
@@ -64,28 +133,29 @@
            
         {{#each data}}
 
-            <div class="row col-4 info mt-1 ">
+            <div class="row col-5 justify-content-between info mt-1 ">
                 <div class="col-2">{{#ifCond status 'CODING'}}
                 <div class="btn btn-success">ONGOING</div>
                  {{else}}
                 <div class="btn btn-secondary"> UPCOMING</div>
                 {{/ifCond}}</div>
-                <div class="col-6 offset-4" ><a href='{{url}}' target='_blank'>{{name}}</a></div>
+                <div class="col-6 " ><a href='{{url}}' target='_blank'>{{name}}</a></div>
+                <div class="col-2"><h6>{{site}}</h6></div>
             </div>
-            <div class="row col-8 time mt-1">
+            <div class="row col-7 justify-content-between time mt-1">
                 {{#ifCond status 'CODING'}}
                 <div class="col-3" >Already Started</div>
                  {{else}}
                <div class="col-3">{{start_time}}</div>
                 {{/ifCond}}
                 
-                <div class="col-3 offset-2"><div class="end">{{end_time}}</div></div>
-                <div class="col-2 offset-2"><div class="yduration">{{duration}}</div></div>
+                <div class="col-3 "><div class="end">{{end_time}}</div></div>
+                <div class="col-2 "><div class="yduration">{{duration}}</div></div>
             </div>
        
        {{/each}}
         </div>
-    </div>
+    </div> --}}
     </main>
     </div>
 </body>
