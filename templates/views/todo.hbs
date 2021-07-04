@@ -25,12 +25,16 @@
         <div class="container mt-0 main_container">
                     
                     <div id="form" class="form-container">
-                        <form class = "row justify-content-center" method="POST"> 
-                            <div class="col-12 new-task-input">
+                        <form class = "row justify-content-center" method="POST">
+
+                            <div class="col-12">
                                 <textarea name ="description" class="form-control task pt-2" id="description" placeholder="Add a new task"></textarea>
                             </div>
-                            <div class="col-12 add_button px-2 mt-2">
-                         <input type="submit" onclick="hide()" class = "btn btn-success new_task" value="ADD" style="width: 100%;">
+                            <div class="col-4 pe-0 mt-2" >
+                                <div class="btn btn-warning" style="height:100%; width: 100%;" onclick="hide()">Back</div>
+                            </div>
+                            <div class="col-8 mt-2 ">
+                         <input type="submit" onclick="hide()" class = "btn btn-success" value="ADD" style="width: 100%;">
                          </input>
                         
 
@@ -48,18 +52,25 @@
                     </div>
                     {{#each todos}}
                                 <div id="{{_id}}" class="row justify-content-start align-items-start g-0 expand-task">
-                                        <div class="col-12 ex-descp p-3">
-                                        {{description}}
-
-                                        </div>
-                                        <div class="col-12" onclick="collapse_task('{{_id}}')">
-                                            <a href="/delete?id={{_id}}"><div class="btn btn-danger new_task"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
-                                                <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
-                                                <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
-                                                </svg></div>
-                                            </a>
+                                        <div class="row justify-content-center">
+                                            <div class="col-12 ex-descp">
+                                                {{description}}
+                                            </div>
+                                            <div class="col-4 p-0 pe-1 mt-2">
+                                                <div class="btn btn-warning" style="height:100%; width: 100%;" onclick="collapse_task('{{_id}}')">Back</div>
+                                            </div>
+                                            <div class="col-8 p-0 ps-1 mt-2">
+                                                <div>
+                                                    <a href="/delete?id={{_id}}"><div class="btn btn-danger new_task"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                                        <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                                                        <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                                                        </svg></div>
+                                                    </a>
                                         
+                                                </div>
+                                            </div>
                                         </div>
+                                       
                                 </div>
                             
                             <div class="col-2 brief-task descp m-2 p-3" onclick="expand_task('{{_id}}')">

@@ -136,11 +136,15 @@
                 
             </form>
         </div>
-
-        <div class="row">
-            <div class="col-1"></div>
+        {{#if isDefined}}
+        <div class="row justify-content-evenly">
+            <div class="d-flex justify-content-center align-items-center nav_arrow col-1 mt-5 me-1" onclick="prev()">
+                <svg class="arrow" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-bar-left" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M12.5 15a.5.5 0 0 1-.5-.5v-13a.5.5 0 0 1 1 0v13a.5.5 0 0 1-.5.5zM10 8a.5.5 0 0 1-.5.5H3.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L3.707 7.5H9.5a.5.5 0 0 1 .5.5z"/>
+                </svg>
+            </div>
                 <div class="col-10 main_container d-flex justify-content-around align-items-center mt-5">
-                    {{#if isDefined}}
+                    
                     <div id="1" class="container pg pg-1">
         <div class="row justify-content-between mt-3">
             <div class="col-2 dp">
@@ -254,129 +258,72 @@
             </div>
 
         </div>
+                </div>
+            <div class="d-flex justify-content-center align-items-center nav_arrow col-1 mt-5 ms-1" onclick="next()">
+                <svg class="arrow" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-bar-right" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M6 8a.5.5 0 0 0 .5.5h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L12.293 7.5H6.5A.5.5 0 0 0 6 8zm-2.5 7a.5.5 0 0 1-.5-.5v-13a.5.5 0 0 1 1 0v13a.5.5 0 0 1-.5.5z"/>
+                </svg>
+            </div>
+        </div>
+        
         {{/if}}
-                </div>
-            <div class="col-1"></div>
-        </div>
         
 
 
         
     
     
-    {{!-- {{#if isDefined}}
-    <div class="container">
-        <div class="row justify-content-between mt-3">
-            <div class="col-2 dp">
-                    <img class="img-thumbnail profile" src={{profile.avatar}}>
-                
-                
-                <div class="rank mt-2 m-1 btn btn-warning">
-                    {{profile.rank}}
-                </div>
-            </div>
-            
-            
-                
-               
-                    <div class="col-5">
-                        
-                <table class="table table-dark table-striped rounded table-hover">
-                    <tbody> 
-                        <tr>
-                            {{!-- <td scope="row"></td> --}}
-                            <td>Current Rating</td>
-                            <td class="text-right">{{profile.rating}}</td>
-                        </tr>
-                        <tr>
-                            {{!-- <td scope="row"></td> --}}
-                            <td>Maximum Rating</td>
-                            <td class="text-right">{{profile.maxRating}}</td>
-                        </tr>
-                         <tr>
-                            {{!-- <td scope="row"></td> --}}
-                            <td>Contests</td>
-                            <td class="text-right">{{profile.contests}}</td>
-                        </tr>
-                        <tr>
-                            {{!-- <td scope="row"></td> --}}
-                            <td>Tried</td>
-                            <td class="text-right">{{profile.tried}}</td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Solved
-                            </td>
-                            <td class="text-right">
-                                {{profile.solved}}
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                    </div>
-                    <div class="col-5">
-                        <table class="table table-dark table-striped rounded table-hover">
-                    <tbody class="rounded"> 
-                        <tr class="rounded">
-                            {{!-- <td scope="row"></td> --}}
-                            <td>Solved with Single Submission</td>
-                            <td class="text-right">{{profile.oneShot}}</td>
-                        </tr>
-                        <tr>
-                            {{!-- <td scope="row"></td> --}}
-                            <td>Maximum Rank</td>
-                            <td class="text-right">{{profile.maxRank}}</td>
-                        </tr>
-                         <tr>
-                            {{!-- <td scope="row"></td> --}}
-                            <td>Minimum Rank</td>
-                            <td class="text-right">{{profile.minRank}}</td>
-                        </tr>
-                        <tr>
-                            {{!-- <td scope="row"></td> --}}
-                            <td>Maximum Up</td>
-                            <td class="text-right">{{profile.maxUp}}</td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Maximum Down
-                            </td>
-                            <td class="text-right">
-                                {{profile.maxDown}}
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                        
-                  
-                    </div>
-                
-               
-                
-
-                
-        </div>
-        <div class="row justify-content-evenly">
-             <div class="col-6 mt-3 shadow p-3 m-3 bg-body rounded">
-                <div id="chartContainer" style="height: 370px; width: 100%; margin: 0 auto;"></div>
-            </div>
-            <div class="col-6 shadow p-3 m-3 bg-body rounded">
-                <div id="chartContainer3" style="height: 370px; width: 100%; margin: 0 auto;"></div>
-            </div>
-            <div class="col-12 shadow p-3 m-4 bg-body rounded">
-                <div id="chartContainer1" style="height: 370px; width: 100%;margin: 0 auto;"></div>
     
-            </div>
-            <div class="col-12 shadow p-3 m-4 bg-body rounded">
-                <div id="chartContainer2" class="mt-4" style="height: 370px; width: 100%;margin: 0 auto;"></div>
-            </div>
-           
-        </div>
-    
-     
-    
-    </div> --}}
-    {{!-- {{/if}} --}}
     </div>
+    <script>
+
+        function next(){
+            let pg_1 = document.querySelector('.pg-1')
+            let pg_2 = document.querySelector('.pg-2')
+            let pg_3 = document.querySelector('.pg-3')
+            let pg_4 = document.querySelector('.pg-4')
+            if(getComputedStyle(pg_1).visibility == "visible"){
+                document.getElementById("1").style.visibility = "hidden"
+                document.getElementById("2").style.visibility = "visible"
+            }
+            else if(getComputedStyle(pg_2).visibility == "visible"){
+                document.getElementById("2").style.visibility = "hidden"
+                document.getElementById("3").style.visibility = "visible"
+            }
+            else if(getComputedStyle(pg_3).visibility == "visible"){
+                document.getElementById("3").style.visibility = "hidden"
+                document.getElementById("4").style.visibility = "visible"
+            }
+            else if(getComputedStyle(pg_4).visibility == "visible"){
+                document.getElementById("4").style.visibility = "hidden"
+                document.getElementById("1").style.visibility = "visible"
+            }
+            
+        }
+
+        function prev() {
+            let pg_1 = document.querySelector('.pg-1')
+            let pg_2 = document.querySelector('.pg-2')
+            let pg_3 = document.querySelector('.pg-3')
+            let pg_4 = document.querySelector('.pg-4')
+            if(getComputedStyle(pg_2).visibility == "visible"){
+                document.getElementById("2").style.visibility = "hidden"
+                document.getElementById("1").style.visibility = "visible"
+            }
+            else if(getComputedStyle(pg_3).visibility == "visible"){
+                document.getElementById("3").style.visibility = "hidden"
+                document.getElementById("2").style.visibility = "visible"
+            }
+            else if(getComputedStyle(pg_4).visibility == "visible"){
+                document.getElementById("4").style.visibility = "hidden"
+                document.getElementById("3").style.visibility = "visible"
+            }
+            else if(getComputedStyle(pg_1).visibility == "visible"){
+                document.getElementById("1").style.visibility = "hidden"
+                document.getElementById("4").style.visibility = "visible"
+            }
+            
+        }
+    </script>
 </body>
 </html>

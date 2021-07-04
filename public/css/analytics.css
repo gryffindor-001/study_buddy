@@ -42,11 +42,21 @@ a{
     position: absolute;
 }
 .pg-1{
-    visibility: hidden;
+    visibility: visible;
 }
 .pg-2{
     visibility: hidden;
 }
 .pg-3{
     visibility: hidden;
+}
+.pg-4{
+    visibility: hidden;
+}
+.arrow{
+    width: 50px;
+    height: 50px;
+}
+.nav_arrow{
+    width: 50px;
 }

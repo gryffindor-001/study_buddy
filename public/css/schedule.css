@@ -1,6 +1,6 @@
 
 * {
-    color: black;
+    color: white;
     border-color: white;
     font-family: 'Quicksand';
 }
@@ -69,5 +69,17 @@ a{
 .btn.login:hover{
     background-color: white;
     color: black;
+}
+th{
+    height: 42px;
+}
+tr{
+    height: 43px;
+}
+.table{
+    width: 15%;
+}
+.tuesday{
+    height: 1%;
 }
 

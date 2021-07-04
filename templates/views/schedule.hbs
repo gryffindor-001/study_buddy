@@ -23,6 +23,283 @@
 </head>
 <body>
     {{>header}}
+    <div class="container calender">
+        <div class="row" style="height: 500px;">
+            <table class="table monday table-dark table-stripe">
+        <thead>
+            <tr>
+                <th colspan="3" class="border border-top-0 border-warning" style="text-align: center;">Monday</th>
+            </tr>
+            <tr>
+                <th class="border-0" style="background-color: rgb(109, 230, 139);">ST</th>
+                <th class="border border-0" style="background-color: rgb(158, 158, 158);">Task</th>
+                <th class="border border-top-0 border-bottom-0 border-start-0 border-warning" style="background-color: rgb(238, 89, 89);">ET</th>
+                
+            </tr>
+        </thead>    
+        <tbody>
+            {{#each Monday}}
+            <tr>
+                <td>
+                    {{startTimeHour}}:{{startTimeMin}}
+                </td>
+                <td class="{{importance}}">
+                    {{description}}
+                </td>
+                <td>
+                    {{endTimeHour}}:{{endTimeMin}}
+                </td>
+            </tr>
+                {{!-- {{description}}&nbsp;&nbsp;&nbsp;&nbsp;{{startTimeHour}}:{{startTimeMin}}
+                &nbsp;&nbsp;&nbsp;&nbsp;{{importance}} --}}
+            
+              {{/each}}
+        </tbody>
+        </table>    
+        <table class="table table-dark table-stripe">
+        <thead>
+            <tr>
+                <th colspan="3" class="tuesday border border-top-0 border-warning" style="text-align: center;">Tuesday</th>
+            </tr>
+            <tr>
+                <th class="border-0" style="background-color: rgb(109, 230, 139);">ST</th>
+                <th class="border border-0" style="background-color: rgb(158, 158, 158);">Task</th>
+                <th class="border border-top-0 border-bottom-0 border-start-0 border-warning" style="background-color: rgb(238, 89, 89);">ET</th>
+                
+            </tr>
+        </thead>    
+        <tbody>
+            {{#each Tuesday}}
+            <tr>
+                <td>
+                    {{startTimeHour}}:{{startTimeMin}}
+                </td>
+                <td class="{{importance}}">
+                    {{description}}
+                </td>
+                <td>
+                    {{endTimeHour}}:{{endTimeMin}}
+                </td>
+            </tr>
+                {{!-- {{description}}&nbsp;&nbsp;&nbsp;&nbsp;{{startTimeHour}}:{{startTimeMin}}
+                &nbsp;&nbsp;&nbsp;&nbsp;{{importance}} --}}
+            
+              {{/each}}
+        </tbody>
+        </table>
+        <table class="col table table-dark table-stripe">
+        <thead>
+            <tr>
+                <th colspan="3" class="border border-top-0 border-warning" style="text-align: center;">Wednesday</th>
+            </tr>
+            <tr>
+                <th class="border-0" style="background-color: rgb(109, 230, 139);">ST</th>
+                <th class="border border-0" style="background-color: rgb(158, 158, 158);">Task</th>
+                <th class="border border-top-0 border-bottom-0 border-start-0 border-warning" style="background-color: rgb(238, 89, 89);">ET</th>
+                
+            </tr>
+        </thead>    
+        <tbody>
+            {{#each Wednesday}}
+            <tr>
+                <td>
+                    {{startTimeHour}}:{{startTimeMin}}
+                </td>
+                <td class="{{importance}}">
+                    {{description}}
+                </td>
+                <td>
+                    {{endTimeHour}}:{{endTimeMin}}
+                </td>
+            </tr>
+                {{!-- {{description}}&nbsp;&nbsp;&nbsp;&nbsp;{{startTimeHour}}:{{startTimeMin}}
+                &nbsp;&nbsp;&nbsp;&nbsp;{{importance}} --}}
+            
+              {{/each}}
+        </tbody>
+        </table>
+        <table class="col table table-dark table-stripe">
+        <thead>
+            <tr>
+                <th colspan="3" class="border border-top-0 border-warning" style="text-align: center;">Thursday</th>
+            </tr>
+            <tr>
+                <th class="border-0" style="background-color: rgb(109, 230, 139);">ST</th>
+                <th class="border border-0" style="background-color: rgb(158, 158, 158);">Task</th>
+                <th class="border border-top-0 border-bottom-0 border-start-0 border-warning" style="background-color: rgb(238, 89, 89);">ET</th>
+                
+            </tr>
+        </thead>    
+        <tbody>
+            {{#each Thursday}}
+            <tr>
+                <td>
+                    {{startTimeHour}}:{{startTimeMin}}
+                </td>
+                <td class="{{importance}}">
+                    {{description}}
+                </td>
+                <td>
+                    {{endTimeHour}}:{{endTimeMin}}
+                </td>
+            </tr>
+                {{!-- {{description}}&nbsp;&nbsp;&nbsp;&nbsp;{{startTimeHour}}:{{startTimeMin}}
+                &nbsp;&nbsp;&nbsp;&nbsp;{{importance}} --}}
+            
+              {{/each}}
+        </tbody>
+        </table>
+        <table class="col table table-dark table-stripe">
+        <thead>
+            <tr>
+                <th colspan="3" class="border border-top-0 border-warning" style="text-align: center;">Friday</th>
+            </tr>
+            <tr>
+                <th class="border-0" style="background-color: rgb(109, 230, 139);">ST</th>
+                <th class="border border-0" style="background-color: rgb(158, 158, 158);">Task</th>
+                <th class="border border-top-0 border-bottom-0 border-start-0 border-warning" style="background-color: rgb(238, 89, 89);">ET</th>
+                
+            </tr>
+        </thead>    
+        <tbody>
+            {{#each Friday}}
+            <tr>
+                <td>
+                    {{startTimeHour}}:{{startTimeMin}}
+                </td>
+                <td class="{{importance}}">
+                    {{description}}
+                </td>
+                <td>
+                    {{endTimeHour}}:{{endTimeMin}}
+                </td>
+            </tr>
+                {{!-- {{description}}&nbsp;&nbsp;&nbsp;&nbsp;{{startTimeHour}}:{{startTimeMin}}
+                &nbsp;&nbsp;&nbsp;&nbsp;{{importance}} --}}
+            
+              {{/each}}
+        </tbody>
+        </table>
+        <table class="col table table-dark table-stripe">
+        <thead>
+            <tr>
+                <th colspan="3" class="border border-top-0 border-warning" style="text-align: center;">Saturday</th>
+            </tr>
+            <tr>
+                <th class="border-0" style="background-color: rgb(109, 230, 139);">ST</th>
+                <th class="border border-0" style="background-color: rgb(158, 158, 158);">Task</th>
+                <th class="border border-top-0 border-bottom-0 border-start-0 border-warning" style="background-color: rgb(238, 89, 89);">ET</th>
+                
+            </tr>
+        </thead>    
+        <tbody>
+            {{#each Saturday}}
+            <tr>
+                <td>
+                    {{startTimeHour}}:{{startTimeMin}}
+                </td>
+                <td class="{{importance}}">
+                    {{description}}
+                </td>
+                <td>
+                    {{endTimeHour}}:{{endTimeMin}}
+                </td>
+            </tr>
+                {{!-- {{description}}&nbsp;&nbsp;&nbsp;&nbsp;{{startTimeHour}}:{{startTimeMin}}
+                &nbsp;&nbsp;&nbsp;&nbsp;{{importance}} --}}
+            
+              {{/each}}
+        </tbody>
+        </table>
+        <table class="col table table-dark table-stripe">
+            
+                <thead>
+            <tr>
+                <th colspan="3" class="border border-top-0 border-warning" style="text-align: center;">Sunday</th>
+            </tr>
+            <tr>
+                <th class="border border-0" style="background-color: rgb(109, 230, 139);">ST</th>
+                <th class="border border-0" style="background-color: rgb(158, 158, 158);">Task</th>
+                <th class="border border-top-0 border-bottom-0 border-start-0 border-warning" style="background-color: rgb(238, 89, 89);">ET</th>
+                
+            </tr>
+        </thead>    
+        
+        <tbody>
+            {{#each Sunday}}
+            <tr>
+                <td>
+                    {{startTimeHour}}:{{startTimeMin}}
+                </td>
+                <td class="{{importance}}">
+                    {{description}}
+                </td>
+                <td>
+                    {{endTimeHour}}:{{endTimeMin}}
+                </td>
+            </tr>
+                {{!-- {{description}}&nbsp;&nbsp;&nbsp;&nbsp;{{startTimeHour}}:{{startTimeMin}}
+                &nbsp;&nbsp;&nbsp;&nbsp;{{importance}} --}}
+            
+              {{/each}}
+        </tbody>
+        </table>
+        </div>
+        
+
+
+
+        {{!-- <table class="table table-dark table-stripe">
+        <thead>
+            <tr>
+                <th colspan="3" class="border border-top-0 border-warning" style="text-align: center;">Monday</th>
+                <th colspan="3" class="border border-top-0 border-warning" style="text-align: center;">Tuesday</th>
+                <th colspan="3" class="border border-top-0 border-warning" style="text-align: center;">Wednesday</th>
+                <th colspan="3" class="border border-top-0 border-warning" style="text-align: center;">Thursday</th>
+                <th colspan="3" class="border border-top-0 border-warning" style="text-align: center;">Friday</th>
+                <th colspan="3" class="border border-top-0 border-warning" style="text-align: center;">Saturday</th>
+                <th colspan="3" class="border border-top-0 border-warning" style="text-align: center;">Sunday</th>
+            </tr>
+            <tr>
+                <th style="background-color: rgb(109, 230, 139);">ST</th>
+                <th style="background-color: rgb(158, 158, 158);">Task</th>
+                <th class="border border-top-0 border-bottom-0 border-start-0 border-warning" style="background-color: rgb(238, 89, 89);">ET</th>
+                <th style="background-color: rgb(109, 230, 139);">ST</th>
+                <th style="background-color: rgb(158, 158, 158);">Task</th>
+                <th class="border border-top-0 border-bottom-0 border-start-0 border-warning" style="background-color: rgb(238, 89, 89);">ET</th>
+                <th style="background-color: rgb(109, 230, 139);">ST</th>
+                <th style="background-color: rgb(158, 158, 158);">Task</th>
+                <th class="border border-top-0 border-bottom-0 border-start-0 border-warning" style="background-color: rgb(238, 89, 89);">ET</th>
+                <th style="background-color: rgb(109, 230, 139);">ST</th>
+                <th style="background-color: rgb(158, 158, 158);">Task</th>
+                <th class="border border-top-0 border-bottom-0 border-start-0 border-warning" style="background-color: rgb(238, 89, 89);">ET</th>
+                <th style="background-color: rgb(109, 230, 139);">ST</th>
+                <th style="background-color: rgb(158, 158, 158);">Task</th>
+                <th class="border border-top-0 border-bottom-0 border-start-0 border-warning" style="background-color: rgb(238, 89, 89);">ET</th>
+                <th style="background-color: rgb(109, 230, 139);">ST</th>
+                <th style="background-color: rgb(158, 158, 158);">Task</th>
+                <th class="border border-top-0 border-bottom-0 border-start-0 border-warning" style="background-color: rgb(238, 89, 89);">ET</th>
+                <th style="background-color: rgb(109, 230, 139);">ST</th>
+                <th style="background-color: rgb(158, 158, 158);">Task</th>
+                <th class="border border-top-0 border-bottom-0 border-start-0 border-warning" style="background-color: rgb(238, 89, 89);">ET</th>
+                
+                
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table> --}}
+    </div>
+    
+
+
+
+
+
+
+
+
     <form method="POST">
         Day:<select name='day' required>
             <option name='select' selected disabled>--Select Day--</option>
