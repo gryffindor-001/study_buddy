@@ -11,6 +11,7 @@ const logoutRouter = require('./routers/logout')
 const todoRouter = require('./routers/todo')
 const analyticsRouter = require('./routers/analytics')
 const scheduleRouter = require('./routers/schedule')
+const auth = require('./middleware/auth')
 
 const app = express()
 
@@ -44,6 +45,10 @@ hbs.registerHelper('for', function(from, to, incr, block) {
 
 app.get('/', isauth, (req, res) => {
     res.render('index', {isauth: req.isauth, notisauth: !req.isauth})
+})
+
+app.get('/resources',auth,(req,res)=>{
+    res.render('resources',{isauth:true})
 })
 
 app.listen(process.env.PORT, () => {
