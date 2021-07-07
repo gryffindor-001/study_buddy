@@ -19,12 +19,14 @@
                 console.log('Kyahiiiiiiiii')
             {{/ifCond}}
         }
+        
+        
     </script>
 </head>
 <body>
+    <div id="overlay-blur"></div>
     {{>header}}
     <div class="container calender">
-        <div class="row" style="height: 500px;">
             <table class="table monday table-dark table-stripe">
         <thead>
             <tr>
@@ -38,6 +40,11 @@
             </tr>
         </thead>    
         <tbody>
+            <tr>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        </tr>
             {{#each Monday}}
             <tr>
                 <td>
@@ -58,7 +65,7 @@
         </table>    
         <table class="table table-dark table-stripe">
         <thead>
-            <tr>
+            <tr height="50px" >
                 <th colspan="3" class="tuesday border border-top-0 border-warning" style="text-align: center;">Tuesday</th>
             </tr>
             <tr>
@@ -69,6 +76,11 @@
             </tr>
         </thead>    
         <tbody>
+            <tr>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        </tr>
             {{#each Tuesday}}
             <tr>
                 <td>
@@ -100,6 +112,11 @@
             </tr>
         </thead>    
         <tbody>
+            <tr>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        </tr>
             {{#each Wednesday}}
             <tr>
                 <td>
@@ -131,6 +148,11 @@
             </tr>
         </thead>    
         <tbody>
+            <tr>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        </tr>
             {{#each Thursday}}
             <tr>
                 <td>
@@ -162,6 +184,11 @@
             </tr>
         </thead>    
         <tbody>
+            <tr>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        </tr>
             {{#each Friday}}
             <tr>
                 <td>
@@ -193,6 +220,11 @@
             </tr>
         </thead>    
         <tbody>
+            <tr>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        </tr>
             {{#each Saturday}}
             <tr>
                 <td>
@@ -226,6 +258,11 @@
         </thead>    
         
         <tbody>
+            <tr>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        </tr>
             {{#each Sunday}}
             <tr>
                 <td>
@@ -244,7 +281,6 @@
               {{/each}}
         </tbody>
         </table>
-        </div>
         
 
 
@@ -290,99 +326,95 @@
 
         </tbody>
     </table> --}}
+    
+    </div>
+    <div class="container">
+        <div class="btn btn-info mt-5" onclick="show()" style="color: white;">
+
+        Add a new task to your schedule
+
+    </div>
     </div>
     
 
+    
 
-
-
-
-
-
-
-    <form method="POST">
-        Day:<select name='day' required>
-            <option name='select' selected disabled>--Select Day--</option>
-            <option name='sunday'>Sunday</option>
-            <option name='monday'>Monday</option>
-            <option name='tuesday'>Tuesday</option>
-            <option name='wednesday'>Wednesday</option>
-            <option name='thursday'>Thursday</option>
-            <option name='friday'>Friday</option>
-            <option name='saturday'>Saturday</option>
-        </select>
-        <br>
-        Start Time:<input type="time" name="start" required>
-        <br>
-        End Time:<input type="time" name="end" required>
-        <br>
-        Description:<textarea name='description' required></textarea>
-        <br>
-        Importance: <br>
-        1:<input type="radio" name='importance' value="1" required>
-        <br>
-        2:<input type="radio" name='importance' value="2">
-        <br>
-        3:<input type="radio" name='importance' value='3'>
-        <input type="submit" value="submit">
-    </form>
-
-    Monday:<ul> 
-        {{#each Monday}}
-            <li>
-                {{description}}&nbsp;&nbsp;&nbsp;&nbsp;{{startTimeHour}}:{{startTimeMin}}
-                &nbsp;&nbsp;&nbsp;&nbsp;{{importance}}
-            </li>
-        {{/each}}
-    </ul>
-    Tuesday:<ul> 
-        {{#each Tuesday}}
-            <li>
-                {{description}}&nbsp;&nbsp;&nbsp;&nbsp;{{startTimeHour}}:{{startTimeMin}}
-                &nbsp;&nbsp;&nbsp;&nbsp;{{importance}}
-            </li>
-        {{/each}}
-    </ul>
-    Wednesday:<ul> 
-        {{#each Wednesday}}
-            <li>
-                {{description}}&nbsp;&nbsp;&nbsp;&nbsp;{{startTimeHour}}:{{startTimeMin}}
-                &nbsp;&nbsp;&nbsp;&nbsp;{{importance}}
-            </li>
-        {{/each}}
-    </ul>
-    Thursday:<ul> 
-        {{#each Thursday}}
-            <li>
-                {{description}}&nbsp;&nbsp;&nbsp;&nbsp;{{startTimeHour}}:{{startTimeMin}}
-                &nbsp;&nbsp;&nbsp;&nbsp;{{importance}}
-            </li>
-        {{/each}}
-    </ul>
-    Friday:<ul> 
-        {{#each Friday}}
-            <li>
-                {{description}}&nbsp;&nbsp;&nbsp;&nbsp;{{startTimeHour}}:{{startTimeMin}}
-                &nbsp;&nbsp;&nbsp;&nbsp;{{importance}}
-            </li>
-        {{/each}}
+    
+    <div id="form-popup" class="p-4">
+        <form method="POST" class="row">
+            <div class="col-12 mb-2">
+                <label class="form-label">Day</label>
+            <select name='day' class="form-control" required>
+            <option name='select' class="form-control" selected disabled>--Select Day--</option>
+            <option name='sunday' class="form-control">Sunday</option>
+            <option name='monday' class="form-control">Monday</option>
+            <option name='tuesday' class="form-control">Tuesday</option>
+            <option name='wednesday' class="form-control">Wednesday</option>
+            <option name='thursday' class="form-control">Thursday</option>
+            <option name='friday' class="form-control">Friday</option>
+            <option name='saturday' class="form-control">Saturday</option>
+            </select>
+            </div>
+            <div class="col-6 mb-2">
+                <label class="form-label">Start Time</label><input type="time" name="start" class="form-control" required>
+            </div>
+            <div class="col-6 mb-2">
+                <label class="form-label">End Time</label><input type="time" name="end" class="form-control" required>
+            </div>
+            <div class="col-12 mb-2">
+                <label class="form-label">Description</label><textarea name='description' class="form-control" required></textarea>
+            </div>
+            <div class="col-12 mb-2">
+                <label class="form-label">Importance</label>
+                <div class="form-check">
+                    <label class="form-check-label" for="1">1</label><input id="1" type="radio" name='importance' value="1" class="form-check-input" required>
+                
+                </div>
+                <div class="form-check">
+                    <label class="form-check-label" for="2">2</label><input id="2" type="radio" name='importance' value="2" class="form-check-input">
+                
+                </div>
+                <div class="form-check">
+                    <label class="form-check-label" for="3">3</label><input id="3" type="radio" name='importance' value='3' class="form-check-input">
+                
+                </div>
+                
+                
+                
+            </div>
+            <div class="col-2 pe-0">
+                    <input class="btn btn-warning" onclick="hide()" style="width: 100%;" value="Back">
+                </div>
+                <div class="col-10">
+                    <input class="btn btn-success" type="submit" style="width: 100%;" value="Submit">
+                </div>
         
-    </ul>
-    Saturday:<ul> 
-        {{#each Saturday}}
-            <li>
-                {{description}}&nbsp;&nbsp;&nbsp;&nbsp;{{startTimeHour}}:{{startTimeMin}}
-                &nbsp;&nbsp;&nbsp;&nbsp;{{importance}}
-            </li>
-        {{/each}}
-    </ul>
-    Sunday:<ul>
-        {{#each Sunday}}
-            <li>
-                {{description}}&nbsp;&nbsp;&nbsp;&nbsp;{{startTimeHour}}:{{startTimeMin}}
-                &nbsp;&nbsp;&nbsp;&nbsp;{{importance}}
-            </li>
-        {{/each}}
-    </ul>
+        
+        
+        
+        
+       
+        
+    </form>
+    </div>
+
+
+
+    <script>
+         function show() {
+
+                            let div = document.getElementById("overlay-blur")
+                            div.style.visibility = "visible"
+                            let form = document.getElementById("form-popup")
+                            form.style.visibility = "visible"
+
+    }
+        function hide(){
+            let div = document.getElementById("overlay-blur")
+            div.style.visibility = "hidden"
+            let form = document.getElementById("form-popup")
+            form.style.visibility = "hidden"
+        }
+    </script>
 </body>
 </html>

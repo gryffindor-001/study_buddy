@@ -82,6 +82,9 @@ router.post('/schedule', auth, async (req, res) => {
         endTimeMin: parseInt(req.body.end.split(":")[1]),
         importance: req.body.importance,
         user_id: req.user_id
+
+        
+    
     })
 
     let tasks = await Schedule.find({user_id: req.user_id, day: data.day})
