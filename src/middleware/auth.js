@@ -12,7 +12,8 @@ const auth = (req,res,next)=>{
     }, (error, response) => {
         if(error)return res.redirect('/login?auth=1')
         else if (!response.body.error){
-            req.user_id=response.body._id
+            req.user_id=response.body._id,
+            req.user_name = response.body.name,
             next()
         }
         else return res.redirect('/login?auth=1')

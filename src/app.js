@@ -44,11 +44,11 @@ hbs.registerHelper('for', function(from, to, incr, block) {
 });
 
 app.get('/', isauth, (req, res) => {
-    res.render('index', {isauth: req.isauth, notisauth: !req.isauth})
+    res.render('index', {isauth: req.isauth, notisauth: !req.isauth, user_name: req.user_name})
 })
 
-app.get('/resources',auth,(req,res)=>{
-    res.render('resources',{isauth:true})
+app.get('/resources', auth, (req,res)=>{
+    res.render('resources',{isauth:true, user_name: req.user_name})
 })
 
 app.listen(process.env.PORT, () => {

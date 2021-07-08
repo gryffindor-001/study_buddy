@@ -231,7 +231,7 @@ router.all('/analytics',auth,async(req,res)=>{
             isDefined = true
         }
 
-        res.render('analytics', {profile, ratingDis, levelDis, tags, handle, verdicts, isDefined, isauth: true})
+        res.render('analytics', {profile, ratingDis, levelDis, tags, handle, verdicts, isDefined, isauth: true, user_name: req.user_name})
     }
     catch(e){
         console.log(e)
