@@ -19,6 +19,7 @@ const isauth = (req,res,next)=>{
         }
         else if (!response.body.error) {
             req.isauth = true
+            req.user_name = response.body.name
             next()
         }
         else {

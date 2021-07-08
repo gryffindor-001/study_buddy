@@ -40,7 +40,7 @@ const tableSchema = new mongoose.Schema({
         required: true
     },
     importance: {
-        type: Number,
+        type: String,
         required: true
     },
     user_id: {
@@ -69,10 +69,22 @@ router.get('/schedule', auth, async (req, res) => {
     Saturday.sort(compare)
     Sunday.sort(compare)
 
-    res.render('schedule', {error: req.query.error, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday, isauth: true})
+    res.render('schedule', {error: req.query.error, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday, isauth: true, user_name: req.user_name})
 })
 
 router.post('/schedule', auth, async (req, res) => {
+    let color
+
+    if(req.body.importance == 1) {
+        color = "red"
+    }
+    else if(req.body.importance == 2) {
+        color = "yellow"
+    }
+    else {
+        color = "green"
+    }
+
     const data = new Schedule({
         description: req.body.description,
         day: req.body.day,
@@ -80,11 +92,8 @@ router.post('/schedule', auth, async (req, res) => {
         startTimeMin: parseInt(req.body.start.split(":")[1]),
         endTimeHour: parseInt(req.body.end.split(":")[0]),
         endTimeMin: parseInt(req.body.end.split(":")[1]),
-        importance: req.body.importance,
+        importance: color,
         user_id: req.user_id
-
-        
-    
     })
 
     let tasks = await Schedule.find({user_id: req.user_id, day: data.day})
@@ -120,6 +129,14 @@ router.post('/schedule', auth, async (req, res) => {
     }
 
     res.redirect('/schedule?error=' + flag)
+})
+
+router.get('/sdelete/:id', auth, async (req, res) => {
+    const id = req.params.id
+
+    await Schedule.findByIdAndDelete(id)
+
+    res.redirect('/schedule')
 })
 
 module.exports = router
