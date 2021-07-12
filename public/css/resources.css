@@ -11,3 +11,6 @@ a{
 strong{
     color: black;
 }
+footer{
+    position: static;
+}

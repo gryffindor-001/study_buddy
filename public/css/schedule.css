@@ -111,12 +111,23 @@ tr{
     opacity: 0;
     transition:visibility 0.5s linear,opacity 0.3s linear;
 }
-.red{
-    background-color: red;
+.red:hover .delete-task{
+    
+    visibility: visible;
 }
-.yellow{
-    background-color: yellow;
+
+.yellow:hover .delete-task{
+    
+    visibility: visible;
 }
-.green{
-    background-color: green;
+.green:hover .delete-task{
+    
+    visibility: visible;
+}
+.delete-task{
+    visibility: hidden;
+
+}
+.btn-danger:focus .delete-task{
+    visibility: visible;
 }
