@@ -26,6 +26,8 @@
     
     background-color: white;
     color: black;
+    
+    overflow: scroll;
 }
 .btn-outline-danger{
     display: flex;
@@ -85,6 +87,7 @@
 
     height: 170px;
     border-radius: 10px;
+    overflow: hidden;
 }
 .expand-task{
     position: absolute;
