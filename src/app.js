@@ -15,6 +15,10 @@ const auth = require('./middleware/auth')
 
 const app = express()
 
+// app.use((req, res) => {
+//     res.send("SITE UNDER MAINTENANCE")
+// })
+
 app.set('view engine', 'hbs')
 app.set('views', path.join(__dirname, '../templates/views'))
 app.use(express.static(path.join(__dirname, '../public')))
